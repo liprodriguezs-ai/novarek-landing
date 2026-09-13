@@ -1,0 +1,94 @@
+---
+import { company } from "../config/company";
+import Icon from "./Icon.astro";
+---
+
+<section class="section sectors" id="sectores">
+	<div class="container">
+		<div class="sectors-head reveal">
+			<h2 class="sectors-title">{company.sectorsTitle}</h2>
+			<p class="sectors-lede">{company.sectorsLede}</p>
+		</div>
+
+		<div class="sectors-grid">
+			{
+				company.sectors.map((sector, i) => (
+					<div class:list={["sector-cell", `sector-${i + 1}`, "reveal"]}>
+						<span class="sector-icon"><Icon name={sector.icon} size={26} /></span>
+						<h3 class="sector-name">{sector.title}</h3>
+						<p class="sector-desc">{sector.description}</p>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.sectors-head {
+		max-width: 46ch;
+		margin-bottom: 3rem;
+	}
+
+	.sectors-title {
+		margin-bottom: 0.9rem;
+	}
+
+	.sectors-lede {
+		color: var(--text-secondary);
+	}
+
+	.sectors-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.25rem;
+	}
+
+	.sector-cell {
+		padding: 1.8rem 1.5rem;
+		border: 1px solid var(--border);
+		border-radius: var(--radius-card);
+		background: linear-gradient(170deg, var(--bg-panel), var(--bg-base));
+		transition: border-color 0.25s ease, transform 0.25s ease;
+	}
+
+	.sector-cell:hover {
+		border-color: var(--border-strong);
+		transform: translateY(-3px);
+	}
+
+	.sector-icon {
+		display: grid;
+		place-items: center;
+		width: 52px;
+		height: 52px;
+		margin-bottom: 1.3rem;
+		border-radius: var(--radius-control);
+		background: var(--accent-soft);
+		border: 1px solid var(--border);
+		color: var(--accent);
+	}
+
+	.sector-name {
+		font-size: 1.14rem;
+		margin-bottom: 0.45rem;
+	}
+
+	.sector-desc {
+		color: var(--text-secondary);
+		font-size: 0.94rem;
+		line-height: 1.55;
+	}
+
+	@media (max-width: 920px) {
+		.sectors-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (max-width: 600px) {
+		.sectors-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

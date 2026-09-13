@@ -1,0 +1,174 @@
+---
+import { company } from "../config/company";
+import Icon from "./Icon.astro";
+
+const socials = [
+	{ label: "Facebook", href: company.social.facebook, icon: "brand-facebook" },
+	{ label: "Instagram", href: company.social.instagram, icon: "brand-instagram" },
+	{ label: "LinkedIn", href: company.social.linkedin, icon: "brand-linkedin" },
+	{ label: "GitHub", href: company.social.github, icon: "brand-github" },
+].filter((s) => s.href);
+---
+
+<footer class="site-footer">
+	<div class="container footer-grid">
+		<div class="footer-brand">
+			<a href="#inicio" class="brand">
+				<span class="brand-mark" aria-hidden="true">
+					<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" width="26" height="26">
+						<path d="M4 26 16 6l12 20" stroke="url(#g1)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+						<circle cx="16" cy="21" r="2.4" fill="var(--accent)" />
+						<defs>
+							<linearGradient id="g1" x1="4" y1="6" x2="28" y2="26" gradientUnits="userSpaceOnUse">
+								<stop stop-color="#00e5ff" />
+								<stop offset="1" stop-color="#8b5cf6" />
+							</linearGradient>
+						</defs>
+					</svg>
+				</span>
+				<span class="brand-text">
+					<strong>{company.shortName}</strong>
+					<small>Technologies</small>
+				</span>
+			</a>
+			<p>{company.description}</p>
+		</div>
+
+		<div class="footer-col">
+			<h4>Navegación</h4>
+			<ul>
+				<li><a href="#inicio">Inicio</a></li>
+				<li><a href="#servicios">Servicios</a></li>
+				<li><a href="#proceso">Proceso</a></li>
+				<li><a href="#stack">Stack</a></li>
+				<li><a href="#sectores">Sectores</a></li>
+				<li><a href="#contacto">Contacto</a></li>
+			</ul>
+		</div>
+
+		<div class="footer-col">
+			<h4>Contacto</h4>
+			<ul>
+				<li><a href={`mailto:${company.email}`}>{company.email}</a></li>
+				<li>
+					<a href={company.whatsappLink} target="_blank" rel="noopener">{company.whatsapp}</a>
+				</li>
+				<li>{company.location}</li>
+			</ul>
+		</div>
+
+		<div class="footer-col footer-social">
+			<h4>Redes</h4>
+			<ul class="social-list">
+				{
+					socials.map((s) => (
+						<li>
+							<a href={s.href} target="_blank" rel="noopener" aria-label={s.label}>
+								<Icon name={s.icon} size={18} />
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</div>
+
+	<div class="footer-bottom">
+		<div class="container">
+			<p>© {company.year} {company.name}. Todos los derechos reservados.</p>
+		</div>
+	</div>
+</footer>
+
+<style>
+	.site-footer {
+		border-top: 1px solid var(--border);
+		background: linear-gradient(180deg, transparent, rgba(10, 13, 28, 0.8));
+		padding-top: 4rem;
+	}
+
+	.footer-grid {
+		display: grid;
+		grid-template-columns: 1.6fr 1fr 1fr 1fr;
+		gap: 2.5rem;
+		padding-bottom: 3.5rem;
+	}
+
+	.footer-brand p {
+		color: var(--text-secondary);
+		font-size: 0.93rem;
+		margin-top: 1.1rem;
+		max-width: 36ch;
+	}
+
+	.footer-col h4 {
+		font-size: 0.82rem;
+		font-weight: 600;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: var(--text-muted);
+		margin-bottom: 1.1rem;
+	}
+
+	.footer-col ul {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		gap: 0.6rem;
+	}
+
+	.footer-col a,
+	.footer-col li {
+		color: var(--text-secondary);
+		font-size: 0.92rem;
+	}
+
+	.footer-col a:hover {
+		color: var(--accent);
+	}
+
+	.social-list {
+		flex-direction: row !important;
+		gap: 0.7rem !important;
+	}
+
+	.social-list a {
+		display: grid;
+		place-items: center;
+		width: 38px;
+		height: 38px;
+		border: 1px solid var(--border);
+		border-radius: 10px;
+		background: var(--bg-panel);
+		color: var(--text-secondary);
+		transition: border-color 0.2s ease, color 0.2s ease;
+	}
+
+	.social-list a:hover {
+		border-color: var(--border-strong);
+		color: var(--accent);
+	}
+
+	.footer-bottom {
+		border-top: 1px solid var(--border);
+		padding-block: 1.4rem;
+	}
+
+	.footer-bottom p {
+		color: var(--text-muted);
+		font-size: 0.84rem;
+		text-align: center;
+	}
+
+	@media (max-width: 900px) {
+		.footer-grid {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	@media (max-width: 520px) {
+		.footer-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

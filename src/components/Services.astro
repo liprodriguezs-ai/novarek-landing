@@ -1,0 +1,112 @@
+---
+import { company } from "../config/company";
+import Icon from "./Icon.astro";
+---
+
+<section class="section services" id="servicios">
+	<div class="container services-grid">
+		<div class="services-head reveal">
+			<p class="kicker">{company.serviceEyebrow}</p>
+			<h2 class="services-title">{company.serviceTitle}</h2>
+			<p class="services-lede">{company.serviceLede}</p>
+		</div>
+
+		<ul class="services-list">
+			{
+				company.services.map((service) => (
+					<li class="service-row reveal">
+						<span class="service-icon"><Icon name={service.icon} size={22} /></span>
+						<div class="service-body">
+							<h3 class="service-name">{service.title}</h3>
+							<p class="service-desc">{service.description}</p>
+						</div>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>
+
+<style>
+	.services-grid {
+		display: grid;
+		grid-template-columns: 0.9fr 1.35fr;
+		gap: clamp(2.5rem, 6vw, 5rem);
+		align-items: start;
+	}
+
+	.services-head {
+		position: sticky;
+		top: 7rem;
+	}
+
+	.kicker {
+		font-family: var(--font-mono);
+		font-size: 0.82rem;
+		letter-spacing: 0.3em;
+		text-transform: uppercase;
+		color: var(--accent);
+		margin-bottom: 1.1rem;
+	}
+
+	.services-title {
+		margin-bottom: 1.1rem;
+	}
+
+	.services-lede {
+		color: var(--text-secondary);
+		max-width: 38ch;
+	}
+
+	.services-list {
+		list-style: none;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 0 1.8rem;
+		border-top: 1px solid var(--border);
+	}
+
+	.service-row {
+		display: flex;
+		gap: 1rem;
+		padding: 1.5rem 0.1rem;
+	}
+
+	.service-icon {
+		flex: 0 0 auto;
+		display: grid;
+		place-items: center;
+		width: 44px;
+		height: 44px;
+		border-radius: var(--radius-control);
+		background: var(--accent-soft);
+		border: 1px solid var(--border);
+		color: var(--accent);
+	}
+
+	.service-name {
+		font-size: 1.12rem;
+		margin-bottom: 0.35rem;
+	}
+
+	.service-desc {
+		color: var(--text-secondary);
+		font-size: 0.95rem;
+		line-height: 1.55;
+	}
+
+	@media (max-width: 940px) {
+		.services-grid {
+			grid-template-columns: 1fr;
+		}
+		.services-head {
+			position: static;
+		}
+	}
+
+	@media (max-width: 560px) {
+		.services-list {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

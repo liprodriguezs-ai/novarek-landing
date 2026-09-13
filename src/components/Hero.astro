@@ -1,0 +1,238 @@
+---
+import { company } from "../config/company";
+
+const servicesAnchor = "#servicios";
+const contactAnchor = "#contacto";
+---
+
+<section class="hero" id="inicio">
+	<div class="container hero-inner">
+		<div class="hero-copy">
+			<p class="hero-kicker">
+				<span class="hero-kicker-code">{company.kicker}</span>
+			</p>
+
+			<h1 class="hero-title">
+				Transformamos ideas en <span class="text-gradient">software que piensa en el futuro</span>.
+			</h1>
+
+			<p class="hero-sub">{company.heroSubtitle}</p>
+
+			<div class="hero-actions">
+				<a class="btn btn-primary" href={contactAnchor}>Hablemos</a>
+				<a class="btn btn-ghost" href={servicesAnchor}>Ver servicios</a>
+			</div>
+		</div>
+
+		<!-- Visual abstracto: red/orbita decorativa, no es UI falsa de producto -->
+		<div class="hero-visual" aria-hidden="true">
+			<div class="orbit orbit-a"></div>
+			<div class="orbit orbit-b"></div>
+			<div class="orbit orbit-c"></div>
+			<div class="orbit-node node-1"></div>
+			<div class="orbit-node node-2"></div>
+			<div class="orbit-node node-3"></div>
+			<div class="orbit-node node-4"></div>
+			<div class="orbit-core"></div>
+			<div class="orbit-ring ring-1"></div>
+			<div class="orbit-ring ring-2"></div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.hero {
+		position: relative;
+		min-height: 100dvh;
+		display: flex;
+		align-items: center;
+		overflow: hidden;
+		isolation: isolate;
+	}
+
+	/* Aurora de fondo del hero, contenida (no en todas las tarjetas) */
+	.hero::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		background:
+			radial-gradient(ellipse 46% 38% at 14% 22%, rgba(0, 217, 255, 0.12), transparent 65%),
+			radial-gradient(ellipse 42% 36% at 86% 30%, rgba(124, 92, 255, 0.13), transparent 62%);
+		pointer-events: none;
+	}
+
+	.hero-inner {
+		display: grid;
+		grid-template-columns: 1.15fr 0.85fr;
+		gap: clamp(2rem, 5vw, 4.5rem);
+		align-items: center;
+		padding-block: clamp(4.5rem, 9vh, 7rem) clamp(2.5rem, 5vh, 4rem);
+	}
+
+	.hero-kicker {
+		font-family: var(--font-mono);
+		font-size: 0.85rem;
+		letter-spacing: 0.32em;
+		text-transform: uppercase;
+		color: var(--accent);
+		margin-bottom: 1.4rem;
+	}
+
+	.hero-title {
+		margin-bottom: 1.6rem;
+		max-width: 16ch;
+	}
+
+	.hero-sub {
+		color: var(--text-secondary);
+		font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+		max-width: 44ch;
+		margin-bottom: 2.2rem;
+	}
+
+	.hero-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.9rem;
+	}
+
+	/* --- Visual orbital --- */
+	.hero-visual {
+		position: relative;
+		aspect-ratio: 1 / 1;
+		width: min(100%, 460px);
+		margin-inline: auto;
+		border-radius: 22px;
+		background:
+			radial-gradient(circle at 50% 50%, rgba(0, 217, 255, 0.06), transparent 68%),
+			linear-gradient(160deg, rgba(14, 18, 38, 0.9), rgba(5, 6, 15, 0.55));
+		border: 1px solid var(--border);
+		overflow: hidden;
+	}
+
+	.orbit {
+		position: absolute;
+		inset: 0;
+		margin: auto;
+		border-radius: 50%;
+		border: 1px solid rgba(0, 217, 255, 0.2);
+	}
+
+	.orbit-a {
+		width: 86%;
+		height: 86%;
+		animation: orbit-spin 34s linear infinite;
+	}
+
+	.orbit-b {
+		width: 62%;
+		height: 62%;
+		border-style: dashed;
+		opacity: 0.65;
+		animation: orbit-spin 26s linear infinite reverse;
+	}
+
+	.orbit-c {
+		width: 40%;
+		height: 40%;
+		border-color: rgba(124, 92, 255, 0.35);
+		animation: orbit-spin 20s linear infinite;
+	}
+
+	.orbit-node {
+		position: absolute;
+		width: 9px;
+		height: 9px;
+		border-radius: 50%;
+		background: var(--accent);
+		box-shadow: 0 0 12px rgba(0, 217, 255, 0.8);
+	}
+
+	.node-1 {
+		top: 12%;
+		left: 58%;
+	}
+	.node-2 {
+		top: 60%;
+		left: 15%;
+		background: var(--brand-violet);
+		box-shadow: 0 0 12px rgba(124, 92, 255, 0.75);
+	}
+	.node-3 {
+		top: 76%;
+		left: 74%;
+		width: 7px;
+		height: 7px;
+	}
+	.node-4 {
+		top: 34%;
+		left: 42%;
+		width: 6px;
+		height: 6px;
+		opacity: 0.7;
+	}
+
+	.orbit-core {
+		position: absolute;
+		inset: 0;
+		margin: auto;
+		width: 24%;
+		height: 24%;
+		border-radius: 50%;
+		background:
+			radial-gradient(circle at 34% 30%, rgba(255, 255, 255, 0.9), rgba(0, 217, 255, 0.55) 38%, transparent 72%),
+			linear-gradient(135deg, var(--accent), var(--brand-violet));
+		box-shadow: 0 0 34px rgba(0, 217, 255, 0.5), 0 0 90px rgba(124, 92, 255, 0.25);
+	}
+
+	.orbit-ring {
+		position: absolute;
+		border-radius: 50%;
+		background: transparent;
+		border: 1px solid rgba(0, 217, 255, 0.16);
+	}
+
+	.ring-1 {
+		width: 96%;
+		height: 96%;
+		inset: 2%;
+	}
+	.ring-2 {
+		width: 16%;
+		height: 16%;
+		top: 6%;
+		right: 12%;
+		border-color: rgba(124, 92, 255, 0.4);
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		@keyframes orbit-spin {
+			from {
+				transform: rotate(0deg);
+			}
+			to {
+				transform: rotate(360deg);
+			}
+		}
+	}
+
+	@media (max-width: 900px) {
+		.hero-inner {
+			grid-template-columns: 1fr;
+			text-align: center;
+			padding-top: clamp(3.5rem, 8vh, 5rem);
+		}
+		.hero-title,
+		.hero-sub {
+			margin-inline: auto;
+		}
+		.hero-actions {
+			justify-content: center;
+		}
+		.hero-visual {
+			width: min(82%, 380px);
+			margin-top: 1rem;
+		}
+	}
+</style>

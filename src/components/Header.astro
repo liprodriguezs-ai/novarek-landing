@@ -1,0 +1,250 @@
+---
+import { company } from "../config/company";
+
+const navLinks = [
+	{ href: "#inicio", label: "Inicio" },
+	{ href: "#servicios", label: "Servicios" },
+	{ href: "#proceso", label: "Proceso" },
+	{ href: "#stack", label: "Stack" },
+	{ href: "#sectores", label: "Sectores" },
+	{ href: "#contacto", label: "Contacto" },
+];
+---
+
+<header class="site-header">
+	<div class="container header-inner">
+		<a href="#inicio" class="brand" aria-label={`${company.name}, inicio`}>
+			<span class="brand-mark" aria-hidden="true">
+				<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" width="30" height="30">
+					<path d="M4 26 16 6l12 20" stroke="url(#g1)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+					<circle cx="16" cy="21" r="2.4" fill="var(--accent)" />
+					<defs>
+						<linearGradient id="g1" x1="4" y1="6" x2="28" y2="26" gradientUnits="userSpaceOnUse">
+							<stop stop-color="#00e5ff" />
+							<stop offset="1" stop-color="#8b5cf6" />
+						</linearGradient>
+					</defs>
+				</svg>
+			</span>
+			<span class="brand-text">
+				<strong>{company.shortName}</strong>
+				<small>Technologies</small>
+			</span>
+		</a>
+
+		<nav class="nav" aria-label="Navegación principal">
+			<ul>
+				{
+					navLinks.map((link) => (
+						<li>
+							<a href={link.href}>{link.label}</a>
+						</li>
+					))
+				}
+			</ul>
+		</nav>
+
+		<a href="#contacto" class="btn btn-primary header-cta">Hablemos</a>
+
+		<button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" data-nav-toggle>
+			<span></span><span></span><span></span>
+		</button>
+	</div>
+
+	<div class="mobile-menu" data-mobile-menu>
+		<ul>
+			{
+				navLinks.map((link) => (
+					<li>
+						<a href={link.href}>{link.label}</a>
+					</li>
+				))
+			}
+		</ul>
+		<a href="#contacto" class="btn btn-primary">Hablemos</a>
+	</div>
+</header>
+
+<style>
+	.site-header {
+		position: sticky;
+		top: 0;
+		z-index: 100;
+		background: rgba(5, 6, 15, 0.72);
+		backdrop-filter: blur(14px);
+		-webkit-backdrop-filter: blur(14px);
+		border-bottom: 1px solid var(--border);
+	}
+
+	.header-inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1.5rem;
+		height: 4.5rem;
+	}
+
+	.brand {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.65rem;
+		color: var(--text-primary);
+	}
+
+	.brand:hover {
+		color: var(--text-primary);
+	}
+
+	.brand-mark {
+		display: grid;
+		place-items: center;
+		width: 38px;
+		height: 38px;
+		border-radius: 10px;
+		background: linear-gradient(145deg, var(--bg-panel-2), var(--bg-raised));
+		border: 1px solid var(--border-strong);
+	}
+
+	.brand-text {
+		display: flex;
+		flex-direction: column;
+		line-height: 1.05;
+	}
+
+	.brand-text strong {
+		font-family: var(--font-display);
+		font-size: 1.12rem;
+		letter-spacing: 0.16em;
+	}
+
+	.brand-text small {
+		font-size: 0.66rem;
+		letter-spacing: 0.3em;
+		text-transform: uppercase;
+		color: var(--text-muted);
+	}
+
+	.nav ul {
+		display: flex;
+		gap: 1.9rem;
+		list-style: none;
+	}
+
+	.nav a {
+		color: var(--text-secondary);
+		font-size: 0.92rem;
+		font-weight: 500;
+		position: relative;
+		padding-block: 0.4rem;
+	}
+
+	.nav a::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		height: 1px;
+		background: linear-gradient(90deg, var(--accent), transparent);
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform 0.25s ease;
+	}
+
+	.nav a:hover {
+		color: var(--text-primary);
+	}
+
+	.nav a:hover::after,
+	.nav a[aria-current="page"]::after {
+		transform: scaleX(1);
+	}
+
+	.header-cta {
+		padding: 0.6rem 1.15rem;
+		font-size: 0.86rem;
+	}
+
+	.nav-toggle {
+		display: none;
+		flex-direction: column;
+		gap: 5px;
+		background: none;
+		border: 0;
+		cursor: pointer;
+		padding: 0.4rem;
+	}
+
+	.nav-toggle span {
+		width: 24px;
+		height: 2px;
+		background: var(--accent);
+		border-radius: 2px;
+		transition: transform 0.25s ease, opacity 0.25s ease;
+	}
+
+	.mobile-menu {
+		display: none;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		right: 0;
+		background: rgba(5, 6, 15, 0.96);
+		border-bottom: 1px solid var(--border);
+		padding: 1.2rem var(--container-pad) 1.6rem;
+		backdrop-filter: blur(18px);
+	}
+
+	.mobile-menu.open {
+		display: block;
+	}
+
+	.mobile-menu ul {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+		margin-bottom: 1.2rem;
+	}
+
+	.mobile-menu a {
+		display: block;
+		padding: 0.7rem 0.2rem;
+		color: var(--text-secondary);
+		font-size: 1.02rem;
+		border-bottom: 1px solid var(--border);
+	}
+
+	.mobile-menu a:hover {
+		color: var(--accent);
+	}
+
+	@media (max-width: 860px) {
+		.nav,
+		.header-cta {
+			display: none;
+		}
+
+		.nav-toggle {
+			display: inline-flex;
+		}
+	}
+</style>
+
+<script>
+	const toggle = document.querySelector("[data-nav-toggle]");
+	const menu = document.querySelector("[data-mobile-menu]");
+
+	toggle?.addEventListener("click", () => {
+		const open = menu?.classList.toggle("open") ?? false;
+		toggle.setAttribute("aria-expanded", String(open));
+	});
+
+	// Cerrar menú al hacer clic en un enlace
+	menu?.querySelectorAll("a").forEach((link) => {
+		link.addEventListener("click", () => {
+			menu.classList.remove("open");
+			toggle?.setAttribute("aria-expanded", "false");
+		});
+	});
+</script>

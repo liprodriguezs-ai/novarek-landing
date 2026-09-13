@@ -1,0 +1,73 @@
+---
+// Iconos oficiales de @tabler/icons (v3), importados como SVG crudos.
+// Una sola familia: stroke 2, color currentColor, fondo transparente.
+import terminal from "@tabler/icons/outline/terminal-2.svg?raw";
+import cpu from "@tabler/icons/outline/cpu.svg?raw";
+import cloudComputing from "@tabler/icons/outline/cloud-computing.svg?raw";
+import deviceMobile from "@tabler/icons/outline/device-mobile.svg?raw";
+import shieldCheck from "@tabler/icons/outline/shield-check.svg?raw";
+import bolt from "@tabler/icons/outline/bolt.svg?raw";
+import radar from "@tabler/icons/outline/radar.svg?raw";
+import pencilCode from "@tabler/icons/outline/pencil-code.svg?raw";
+import code from "@tabler/icons/outline/code.svg?raw";
+import rocket from "@tabler/icons/outline/rocket.svg?raw";
+import buildingBank from "@tabler/icons/outline/building-bank.svg?raw";
+import heart from "@tabler/icons/outline/heart.svg?raw";
+import truck from "@tabler/icons/outline/truck.svg?raw";
+import shoppingCart from "@tabler/icons/outline/shopping-cart.svg?raw";
+import school from "@tabler/icons/outline/school.svg?raw";
+import buildingCommunity from "@tabler/icons/outline/building-community.svg?raw";
+import mail from "@tabler/icons/outline/mail.svg?raw";
+import brandWhatsapp from "@tabler/icons/outline/brand-whatsapp.svg?raw";
+import mapPin from "@tabler/icons/outline/map-pin.svg?raw";
+import brandFacebook from "@tabler/icons/outline/brand-facebook.svg?raw";
+import brandInstagram from "@tabler/icons/outline/brand-instagram.svg?raw";
+import brandLinkedin from "@tabler/icons/outline/brand-linkedin.svg?raw";
+import brandGithub from "@tabler/icons/outline/brand-github.svg?raw";
+
+const icons: Record<string, string> = {
+	terminal,
+	cpu,
+	"cloud-computing": cloudComputing,
+	"device-mobile": deviceMobile,
+	"shield-check": shieldCheck,
+	bolt,
+	radar,
+	"pencil-code": pencilCode,
+	code,
+	rocket,
+	"building-bank": buildingBank,
+	heart,
+	truck,
+	"shopping-cart": shoppingCart,
+	school,
+	"building-community": buildingCommunity,
+	mail,
+	"brand-whatsapp": brandWhatsapp,
+	"map-pin": mapPin,
+	"brand-facebook": brandFacebook,
+	"brand-instagram": brandInstagram,
+	"brand-linkedin": brandLinkedin,
+	"brand-github": brandGithub,
+};
+
+interface Props {
+	name: keyof typeof icons | string;
+	size?: number;
+	class?: string;
+}
+
+const { name, size = 24, class: className = "" } = Astro.props;
+
+// Quitar width/height fijos de Tabler para controlar el tamaño con CSS/inline
+let raw = icons[name] ?? "";
+if (raw) {
+	raw = raw
+		.replace(/width="24" height="24"/, `width="${size}" height="${size}"`)
+		.replace('<svg', `<svg class="tb-icon ${className}"`);
+}
+---
+
+{
+	raw && <Fragment set:html={raw} />
+}

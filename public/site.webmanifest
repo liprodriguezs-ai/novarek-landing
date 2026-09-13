@@ -1,0 +1,24 @@
+{
+  "name": "Novarek Technologies",
+  "short_name": "Novarek",
+  "description": "Desarrollo de software a medida, automatización e inteligencia artificial para empresas.",
+  "lang": "es-MX",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f7fc",
+  "theme_color": "#19224b",
+  "icons": [
+    {
+      "src": "/brand/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/brand/novarek-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

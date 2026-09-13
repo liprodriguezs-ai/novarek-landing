@@ -1,0 +1,25 @@
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "novarek-landing",
+	"compatibility_date": "2026-09-12",
+	"assets": {
+		"directory": "./dist",
+		"not_found_handling": "404-page"
+	},
+	"env": {
+		"production": {
+			"name": "novarek-landing-prod",
+			"vars": {
+				"SITE_ENV": "production",
+				"PUBLIC_SITE_URL": "https://novarek.mx"
+			}
+		},
+		"staging": {
+			"name": "novarek-landing-staging",
+			"vars": {
+				"SITE_ENV": "staging",
+				"PUBLIC_SITE_URL": "https://staging.novarek.mx"
+			}
+		}
+	}
+}

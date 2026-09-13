@@ -1,0 +1,83 @@
+---
+import { company } from "../config/company";
+import Icon from "./Icon.astro";
+---
+
+<section class="section process" id="proceso">
+	<div class="container">
+		<div class="process-top reveal">
+			<h2 class="process-title">{company.processTitle}</h2>
+		</div>
+
+		<ol class="process-list">
+			{
+				company.processSteps.map((step) => (
+					<li class="process-step reveal">
+						<span class="process-icon"><Icon name={step.icon} size={24} /></span>
+						<div class="process-body">
+							<h3 class="process-name">{step.title}</h3>
+							<p class="process-desc">{step.description}</p>
+						</div>
+					</li>
+				))
+			}
+		</ol>
+	</div>
+</section>
+
+<style>
+	.process-top {
+		max-width: 44ch;
+		margin-bottom: 3rem;
+	}
+
+	.process-list {
+		list-style: none;
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 1.25rem;
+	}
+
+	.process-step {
+		padding: 1.6rem 1.4rem;
+		border: 1px solid var(--border);
+		border-radius: var(--radius-card);
+		background: linear-gradient(170deg, var(--bg-panel), var(--bg-base));
+		position: relative;
+	}
+
+	.process-icon {
+		display: grid;
+		place-items: center;
+		width: 46px;
+		height: 46px;
+		margin-bottom: 1.1rem;
+		border-radius: var(--radius-control);
+		background: var(--accent-soft);
+		border: 1px solid var(--border);
+		color: var(--accent);
+	}
+
+	.process-name {
+		font-size: 1.1rem;
+		margin-bottom: 0.4rem;
+	}
+
+	.process-desc {
+		color: var(--text-secondary);
+		font-size: 0.93rem;
+		line-height: 1.55;
+	}
+
+	@media (max-width: 1000px) {
+		.process-list {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (max-width: 560px) {
+		.process-list {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

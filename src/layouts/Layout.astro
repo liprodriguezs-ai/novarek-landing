@@ -1,0 +1,101 @@
+---
+import { company } from "../config/company";
+import "../styles/global.css";
+// Fuentes self-hosted (no Google Fonts en producción)
+import "@fontsource-variable/space-grotesk";
+import "@fontsource-variable/manrope";
+import "@fontsource-variable/jetbrains-mono";
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { title = company.metaTitle, description = company.metaDescription } = Astro.props;
+const canonicalUrl = new URL(Astro.url.pathname, company.siteUrl).toString();
+const socialImage = new URL(company.logo, company.siteUrl).toString();
+const isProduction = (import.meta.env.SITE_ENV ?? "production") === "production";
+const robotsContent = isProduction
+	? "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+	: "noindex, nofollow";
+const structuredData = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "Organization",
+			"@id": `${company.siteUrl}/#organization`,
+			name: company.name,
+			url: company.siteUrl,
+			logo: socialImage,
+			sameAs: [company.social.facebook].filter(Boolean),
+		},
+		{
+			"@type": "WebSite",
+			"@id": `${company.siteUrl}/#website`,
+			name: company.name,
+			url: company.siteUrl,
+			inLanguage: "es-MX",
+			publisher: { "@id": `${company.siteUrl}/#organization` },
+		},
+		{
+			"@type": "ProfessionalService",
+			"@id": `${company.siteUrl}/#service`,
+			name: company.name,
+			url: company.siteUrl,
+			description: company.metaDescription,
+			email: company.email,
+			image: socialImage,
+			areaServed: { "@type": "Country", name: company.country },
+			address: {
+				"@type": "PostalAddress",
+				addressLocality: company.city,
+				addressCountry: "MX",
+			},
+			serviceType: [
+				"Desarrollo de software a medida",
+				"Aplicaciones web y móviles",
+				"Automatización de procesos",
+				"Inteligencia artificial para empresas",
+			],
+			parentOrganization: { "@id": `${company.siteUrl}/#organization` },
+		},
+	],
+};
+---
+
+<!doctype html>
+	<html lang="es-MX">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/png" sizes="192x192" href="/brand/icon-192.png" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/brand/apple-touch-icon.png" />
+		<link rel="manifest" href="/site.webmanifest" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<meta name="robots" content={robotsContent} />
+		<meta name="theme-color" content="#19224b" />
+		<link rel="canonical" href={canonicalUrl} />
+		<link rel="sitemap" href="/sitemap.xml" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:site_name" content={company.name} />
+		<meta property="og:locale" content="es_MX" />
+		<meta property="og:image" content={socialImage} />
+		<meta property="og:image:alt" content="Logotipo de Novarek Technologies" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={socialImage} />
+		<meta name="twitter:image:alt" content="Logotipo de Novarek Technologies" />
+		<script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>

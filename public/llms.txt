@@ -1,0 +1,20 @@
+# Novarek Technologies
+
+> Desarrollo de software a medida, aplicaciones web y móviles, automatización e inteligencia artificial para empresas en México.
+
+## Servicios
+
+- Desarrollo de sistemas a medida
+- Aplicaciones web y móviles
+- Automatización de procesos
+- Inteligencia artificial para empresas
+- Arquitectura cloud e infraestructura
+
+## Contacto
+
+- Correo: contacto@novarek.mx
+- Facebook: https://www.facebook.com/profile.php?id=61593262486150
+
+## Página principal
+
+- https://novarek.mx/

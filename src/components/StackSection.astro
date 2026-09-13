@@ -1,0 +1,116 @@
+---
+import { company } from "../config/company";
+---
+
+<section class="section stack" id="stack">
+	<div class="container">
+		<div class="stack-head reveal">
+			<h2 class="stack-title">{company.stackTitle}</h2>
+		</div>
+
+		<div class="stack-panel reveal">
+			{
+				company.techStack.map((group) => (
+					<div class="stack-group">
+						<h3 class="stack-group-name">{group.category}</h3>
+						<ul class="stack-rows">
+							{
+								group.tags.map((tag) => (
+									<li class="stack-row">
+										<span class="stack-dot" aria-hidden="true"></span>
+										<span class="stack-tag">{tag}</span>
+									</li>
+								))
+							}
+						</ul>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.stack-title {
+		max-width: 20ch;
+		margin-bottom: 2.4rem;
+	}
+
+	.stack-panel {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 0;
+		border: 1px solid var(--border);
+		border-radius: var(--radius-card);
+		background: linear-gradient(170deg, var(--bg-panel), rgba(14, 18, 38, 0.7));
+		overflow: hidden;
+	}
+
+	.stack-group {
+		padding: 1.6rem 1.5rem;
+		border-right: 1px solid var(--border);
+	}
+
+	.stack-group:last-child {
+		border-right: none;
+	}
+
+	.stack-group-name {
+		font-family: var(--font-mono);
+		font-size: 0.78rem;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: var(--text-muted);
+		margin-bottom: 1.2rem;
+		font-weight: 500;
+	}
+
+	.stack-rows {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.stack-row {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+		font-size: 0.98rem;
+		color: var(--text-primary);
+	}
+
+	.stack-dot {
+		width: 6px;
+		height: 6px;
+		border-radius: var(--radius-pill);
+		background: var(--accent);
+		flex: 0 0 auto;
+		opacity: 0.85;
+	}
+
+	@media (max-width: 1000px) {
+		.stack-panel {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		.stack-group:nth-child(2) {
+			border-right: none;
+		}
+		.stack-group:nth-child(-n + 2) {
+			border-bottom: 1px solid var(--border);
+		}
+	}
+
+	@media (max-width: 560px) {
+		.stack-panel {
+			grid-template-columns: 1fr;
+		}
+		.stack-group:nth-child(n) {
+			border-right: none;
+			border-bottom: 1px solid var(--border);
+		}
+		.stack-group:last-child {
+			border-bottom: none;
+		}
+	}
+</style>

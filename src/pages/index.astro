@@ -1,0 +1,39 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { company } from "../config/company";
+
+const capabilities = [
+	["01", "Sistemas que ordenan operaciones", "Plataformas internas, portales y software a medida para hacer que el trabajo complejo fluya."],
+	["02", "Productos que encuentran mercado", "Experiencias web y móviles claras, rápidas y hechas para que la gente quiera volver."],
+	["03", "IA que resuelve trabajo real", "Automatización, análisis y asistentes diseñados alrededor de procesos concretos — no demos de laboratorio."],
+];
+const principles = ["Contexto antes que código", "Claridad antes que complejidad", "Entrega antes que promesas"];
+---
+
+<Layout title="Desarrollo de software a medida en México | Novarek" description="Novarek desarrolla software a medida, aplicaciones web y móviles, automatización e IA para empresas en México.">
+	<header class="masthead">
+		<a class="wordmark" href="#inicio" aria-label="Novarek Technologies, inicio"><img src={company.logo} width="56" height="56" alt="" /><span>NOVAREK</span></a>
+		<nav aria-label="Navegación principal"><a href="#enfoque">Enfoque</a><a href="#capacidad">Capacidades</a><a href="#contacto">Contacto</a></nav>
+		<a class="header-link" href="#contacto">Iniciar un proyecto <span aria-hidden="true">↗</span></a>
+	</header>
+	<main>
+		<section class="hero" id="inicio">
+			<p class="eyebrow">Estudio tecnológico / Ciudad de México</p>
+			<h1>La tecnología<br />debe <em>mover</em><br />algo.</h1>
+			<div class="hero-bottom"><p>Desarrollamos software a medida, aplicaciones web y automatización para empresas que necesitan hacer mejor su trabajo.</p><a class="circle-link" href="#contacto"><span>Hablemos</span><b aria-hidden="true">↓</b></a></div>
+			<div class="hero-index" aria-hidden="true">01—04</div>
+		</section>
+		<section class="manifesto" id="enfoque">
+			<p class="eyebrow">Una postura</p>
+			<div class="manifesto-copy"><p class="section-number">(01)</p><h2>No hacemos “soluciones digitales”. Hacemos sistemas que dan <em>ventaja</em>.</h2><p class="lede">Cada proyecto empieza por entender qué está bloqueando el avance. Después, usamos diseño, ingeniería e inteligencia artificial para convertirlo en una herramienta de negocio que sí se usa.</p></div>
+		</section>
+		<section class="capabilities" id="capacidad">
+			<div class="section-heading"><p class="eyebrow">Lo que hacemos</p><p>De la primera pregunta al sistema en producción.</p></div>
+			<div class="capability-list">{capabilities.map(([number, title, description]) => <article class="capability"><span>{number}</span><h3>{title}</h3><p>{description}</p><i aria-hidden="true">↗</i></article>)}</div>
+		</section>
+		<section class="statement"><p>BUENAS IDEAS<br />MERECEN SISTEMAS<br /><em>BIEN HECHOS.</em></p><div aria-hidden="true" class="statement-mark">N</div></section>
+		<section class="method"><div><p class="eyebrow">Cómo trabajamos</p><h2>Menos teatro.<br />Más <em>progreso</em>.</h2></div><ol>{principles.map((principle, index) => <li><span>0{index + 1}</span>{principle}</li>)}</ol></section>
+		<section class="contact" id="contacto"><p class="eyebrow">El siguiente paso</p><h2>¿Hay algo que<br />necesite <em>moverse</em>?</h2><a class="email" href={`mailto:${company.email}`}>{company.email}<span>↗</span></a><p class="contact-note">Cuéntanos qué está pasando. Respondemos con una conversación honesta, no con un pitch.</p></section>
+	</main>
+	<footer><span>© {company.year} Novarek Technologies</span><span>Ciudad de México, MX</span><a href={company.social.facebook} target="_blank" rel="noopener">Facebook ↗</a></footer>
+</Layout>
