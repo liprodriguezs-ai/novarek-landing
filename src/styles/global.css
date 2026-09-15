@@ -122,11 +122,12 @@ nav a:hover,
 
 .hero {
 	min-height: calc(100svh - 78px);
-	padding: clamp(4rem, 8vw, 8rem) clamp(1.2rem, 5vw, 7rem);
+	padding: clamp(4rem, 8vw, 7.5rem) clamp(1.2rem, 5vw, 7rem)
+		clamp(3rem, 6vw, 5rem);
 	display: grid;
-	grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.7fr);
+	grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.34fr);
 	align-items: end;
-	gap: clamp(2rem, 6vw, 6rem);
+	gap: clamp(2rem, 5vw, 5rem);
 	border-bottom: 1px solid var(--line);
 	position: relative;
 	overflow: clip;
@@ -135,42 +136,43 @@ nav a:hover,
 .hero::after {
 	content: "";
 	position: absolute;
-	right: -18vw;
-	top: 10%;
-	width: min(48vw, 680px);
+	right: -14vw;
+	top: 9%;
+	width: min(38vw, 540px);
 	aspect-ratio: 1;
 	border: 1px solid var(--brand-soft);
 	border-radius: 50%;
 	box-shadow:
-		0 0 0 28px var(--paper),
-		0 0 0 29px color-mix(in srgb, var(--ink) 25%, transparent);
+		0 0 0 24px var(--paper),
+		0 0 0 25px color-mix(in srgb, var(--ink) 20%, transparent);
 	pointer-events: none;
 }
 
 .hero-copy,
-.hero-panel {
+.hero-proof {
 	position: relative;
 	z-index: 1;
 }
 
 .intro-line {
-	max-width: 36rem;
-	margin-bottom: clamp(2.6rem, 8vh, 5.5rem);
-	font-weight: 800;
-	font-size: clamp(1rem, 1.4vw, 1.18rem);
+	max-width: 44rem;
+	margin-bottom: clamp(2.8rem, 8vh, 5.25rem);
+	font-weight: 850;
+	font-size: clamp(1rem, 1.25vw, 1.16rem);
 	color: var(--brand-strong);
 }
 
 h1 {
-	max-width: 11ch;
-	margin-bottom: 2rem;
-	font-size: clamp(4rem, 10.5vw, 10.8rem);
-	line-height: 0.86;
+	max-width: 12.8ch;
+	margin-bottom: 1.8rem;
+	font-size: clamp(4.1rem, 7.2vw, 7.4rem);
+	line-height: 0.92;
+	text-wrap: balance;
 }
 
 .hero-lede {
-	max-width: 44rem;
-	font-size: clamp(1.1rem, 1.8vw, 1.45rem);
+	max-width: 42rem;
+	font-size: clamp(1.08rem, 1.45vw, 1.32rem);
 	color: var(--muted);
 }
 
@@ -178,7 +180,7 @@ h1 {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 0.85rem;
-	margin-top: 2.2rem;
+	margin-top: 2.15rem;
 }
 
 .primary-action,
@@ -186,16 +188,16 @@ h1 {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	min-height: 3.3rem;
-	padding: 0 1.2rem;
+	min-height: 3.25rem;
+	padding: 0 1.25rem;
 	border-radius: 999px;
 	font-weight: 850;
 }
 
 .primary-action {
-	background: var(--brand);
+	background: var(--ink);
 	color: var(--paper-soft);
-	box-shadow: 0 16px 35px rgba(77, 34, 170, 0.22);
+	box-shadow: 0 16px 35px rgba(24, 32, 74, 0.18);
 }
 
 .primary-action:hover {
@@ -208,33 +210,30 @@ h1 {
 	background: color-mix(in srgb, var(--paper-soft) 68%, transparent);
 }
 
-.hero-panel {
+.hero-proof {
 	align-self: center;
-	padding: clamp(1.4rem, 3vw, 2.4rem);
-	border: 1px solid var(--line);
-	border-radius: 24px;
-	background: color-mix(in srgb, var(--paper-soft) 82%, transparent);
-	box-shadow: 0 24px 70px rgba(24, 32, 74, 0.08);
+	max-width: 22rem;
+	padding-block: 1.4rem;
+	border-block: 1px solid var(--line);
 }
 
-.hero-panel p {
-	margin-bottom: 1rem;
-	font-weight: 850;
+.hero-proof strong {
+	display: block;
+	font: 560 clamp(2.15rem, 3.3vw, 3.9rem) / 0.94 var(--display);
+	letter-spacing: -0.05em;
 }
 
-.hero-panel ul,
+.hero-proof p {
+	margin: 1.2rem 0 0;
+	color: var(--muted);
+}
+
 .problem-list,
 .outcome-list,
 .process-list {
 	margin: 0;
 	padding: 0;
 	list-style: none;
-}
-
-.hero-panel li {
-	padding: 0.85rem 0;
-	border-top: 1px solid var(--line);
-	color: var(--muted);
 }
 
 .problems,
@@ -459,7 +458,7 @@ footer {
 		min-height: auto;
 	}
 
-	.hero-panel {
+	.hero-proof {
 		max-width: 34rem;
 	}
 
@@ -489,7 +488,9 @@ footer {
 	}
 
 	h1 {
-		font-size: clamp(3.4rem, 18vw, 5.2rem);
+		max-width: 9.5ch;
+		font-size: clamp(3.15rem, 13.2vw, 4.25rem);
+		line-height: 0.96;
 	}
 
 	h2 {
