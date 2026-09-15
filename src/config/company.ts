@@ -15,9 +15,9 @@ export const company = {
 	shortName: "NOVAREK",
 	logo: "/brand/novarek-technologies-logo.png",
 	siteUrl,
-	tagline: "Software, innovación y escalabilidad.",
+	tagline: "Software que ordena tu negocio.",
 	description:
-		"Desarrollo de sistemas a medida con arquitectura moderna, inteligencia artificial y tecnologías de vanguardia.",
+		"Creamos sistemas, portales y automatizaciones para empresas que quieren trabajar con más orden y menos tareas manuales.",
 
 	// --- Contacto (✏️ EDITAR con datos reales) ---
 	email: "contacto@novarek.mx", // TODO: reemplazar
@@ -37,9 +37,9 @@ export const company = {
 	},
 
 	// --- SEO / meta ---
-	metaTitle: "Desarrollo de software a medida en México | Novarek",
+	metaTitle: "Software a medida para ordenar tu negocio | Novarek",
 	metaDescription:
-		"Novarek desarrolla software a medida, aplicaciones web y móviles, automatización e IA para empresas en México.",
+		"Novarek crea sistemas, portales y automatizaciones para empresas que quieren trabajar con más orden, menos tareas manuales y mejor atención a clientes.",
 
 	// --- Año actual (footer) ---
 	year: "2026",
