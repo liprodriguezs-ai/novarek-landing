@@ -1,4 +1,4 @@
-<form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+<form class="contact-form" data-email-form action="https://api.web3forms.com/submit" method="POST">
 	<input type="hidden" name="access_key" value="09202f1c-4bb2-4d21-89aa-f647112e373b" />
 	<div class="field">
 		<label for="contact-name">Nombre</label>
@@ -13,7 +13,55 @@
 		<textarea id="contact-message" name="message" rows="5" placeholder="¿Qué necesitas resolver en tu negocio?" required></textarea>
 	</div>
 	<button class="primary-action" type="submit">Enviar mensaje</button>
+	<p class="form-status" data-form-status role="status" aria-live="polite" aria-atomic="true"></p>
 </form>
+
+<script>
+	for (const form of document.querySelectorAll<HTMLFormElement>("[data-email-form]")) {
+		const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+		const status = form.querySelector<HTMLElement>("[data-form-status]");
+		if (!button || !status) continue;
+		let sending = false;
+		let sent = false;
+
+		form.addEventListener("submit", async (event) => {
+			event.preventDefault();
+			if (sending || sent || !form.reportValidity()) return;
+
+			const body = JSON.stringify(Object.fromEntries(new FormData(form)));
+			sending = true;
+			button.disabled = true;
+			button.textContent = "Enviando…";
+			form.setAttribute("aria-busy", "true");
+			status.dataset.state = "sending";
+			status.textContent = "Estamos enviando tu mensaje…";
+
+			try {
+				const response = await fetch(form.action, {
+					method: "POST",
+					headers: { "Content-Type": "application/json", Accept: "application/json" },
+					body,
+				});
+				const result = await response.json();
+				if (!response.ok || result.success !== true) throw new Error("Submission failed");
+
+				sent = true;
+				form.reset();
+				button.textContent = "Mensaje enviado";
+				status.dataset.state = "success";
+				status.textContent = "¡Mensaje enviado! Gracias por contactarnos. Nos pondremos en contacto contigo pronto.";
+			} catch {
+				button.disabled = false;
+				button.textContent = "Enviar mensaje";
+				status.dataset.state = "error";
+				status.textContent = "No pudimos confirmar el envío. Revisa tu conexión e intenta de nuevo.";
+			} finally {
+				sending = false;
+				form.setAttribute("aria-busy", "false");
+			}
+		});
+	}
+</script>
 
 <style>
 	.contact-form {
@@ -45,4 +93,14 @@
 		outline-offset: 3px;
 	}
 	button { border: 0; cursor: pointer; font: inherit; font-weight: 800; }
+	button:disabled { cursor: default; opacity: 0.7; }
+	.form-status { margin: 0; font-size: 0.95rem; line-height: 1.6; }
+	.form-status:empty { display: none; }
+	.form-status[data-state="success"] {
+		padding: 1rem;
+		border: 1px solid var(--brand-strong);
+		border-radius: 8px;
+		background: var(--paper);
+	}
+	.form-status[data-state="error"] { font-weight: 700; }
 </style>

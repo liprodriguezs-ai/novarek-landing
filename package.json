@@ -17,7 +17,7 @@
     "deploy": "npm run deploy:production",
     "astro": "astro",
     "check": "astro check",
-    "test:contact": "npm run build && node --test scripts/contact.test.mjs"
+    "test:contact": "npm run build && node --test scripts/contact.test.mjs scripts/contact-submit.test.mjs"
   },
   "dependencies": {
     "@fontsource-variable/jetbrains-mono": "^5.3.0",
