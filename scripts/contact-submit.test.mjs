@@ -10,14 +10,21 @@ function mount(fetch) {
   const script = source.match(/<script>([\s\S]*?)<\/script>/)?.[1];
   assert.ok(script, 'The form intercepts submission with a client script');
   const button = { disabled: false, textContent: 'Enviar mensaje' };
-  const status = { textContent: '', dataset: {} };
+  const status = { textContent: '', dataset: {}, hidden: false };
+  const fields = { hidden: false };
+  const confirmation = { hidden: true, focused: false, focus() { this.focused = true; } };
   const values = { access_key: 'test-key', name: 'Ana', email: 'ana@example.com', message: 'Mi proyecto' };
   let listener;
   let resets = 0;
   const attributes = {};
   const form = {
     action: 'https://api.web3forms.com/submit',
-    querySelector: (selector) => selector === 'button[type="submit"]' ? button : status,
+    querySelector: (selector) => ({
+      'button[type="submit"]': button,
+      '[data-form-status]': status,
+      '[data-form-fields]': fields,
+      '[data-success-panel]': confirmation,
+    })[selector],
     addEventListener: (event, callback) => { if (event === 'submit') listener = callback; },
     reportValidity: () => true,
     setAttribute: (key, value) => { attributes[key] = value; },
@@ -28,7 +35,7 @@ function mount(fetch) {
     FormData: class { constructor() { return Object.entries(values)[Symbol.iterator](); } },
     fetch,
   });
-  return { button, status, values, attributes, get resets() { return resets; }, submit() {
+  return { button, status, fields, confirmation, values, attributes, get resets() { return resets; }, submit() {
     let prevented = false;
     const done = listener({ preventDefault() { prevented = true; } });
     assert.equal(prevented, true, 'Submission must not navigate away');
@@ -84,6 +91,9 @@ for (const failure of ['network', 'http', 'provider']) {
     });
     await ui.submit();
     assert.equal(ui.resets, 0);
+    assert.equal(ui.fields.hidden, false);
+    assert.equal(ui.confirmation.hidden, true);
+    assert.equal(ui.status.hidden, false);
     assert.equal(ui.values.message, 'Mi proyecto');
     assert.equal(ui.button.disabled, false);
     assert.equal(ui.button.textContent, 'Enviar mensaje');
@@ -94,3 +104,21 @@ for (const failure of ['network', 'http', 'provider']) {
     assert.equal(ui.resets, 1);
   });
 }
+
+test('Successful submission replaces the fields with the reference confirmation and moves focus', async () => {
+  const ui = mount(async () => ({ ok: true, json: async () => ({ success: true }) }));
+  await ui.submit();
+  assert.equal(ui.fields.hidden, true, 'The form fields must disappear after success');
+  assert.equal(ui.confirmation.hidden, false, 'The complete confirmation must replace the form');
+  assert.equal(ui.confirmation.focused, true, 'Keyboard focus moves to the confirmation');
+  assert.equal(ui.status.hidden, true, 'No duplicate small success notice remains');
+});
+
+test('Confirmation includes the reference icon, headline, and copy without a resend control', () => {
+  const panel = source.match(/<div[^>]*data-success-panel[\s\S]*?<\/div>/)?.[0];
+  assert.ok(panel, 'A dedicated success panel is rendered');
+  assert.match(panel, /<svg\b/);
+  assert.match(panel, /¡Mensaje enviado!/);
+  assert.match(panel, /Gracias por escribirnos\. Te responderemos por correo\./);
+  assert.doesNotMatch(panel, /<button|<a\b/);
+});

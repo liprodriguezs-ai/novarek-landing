@@ -40,7 +40,7 @@ All commands are run from the root of the project, from a terminal:
 
 ## Contact form
 
-The shared form on `/` and `/contacto` submits to Web3Forms using JavaScript without leaving the page. It announces loading, success, and errors inline. The button stays disabled during submission and after a successful response; reloading allows a new submission. Failed submissions keep the entered data and allow retrying. This is a per-page duplicate-click guard, not server-side rate limiting. Without JavaScript, the native POST remains available.
+The shared form on `/` and `/contacto` submits to Web3Forms using JavaScript without leaving the page. It announces loading and errors inline. On success, a full confirmation panel replaces the fields and submit button, with a check icon, prominent heading, and reply-by-email message using the site's typography and colors. Keyboard focus moves to this panel. Repeated submissions are blocked during submission and after success; reloading restores the form for a new submission. Failed submissions keep the entered data and allow retrying. This is a per-page duplicate-click guard, not server-side rate limiting. Without JavaScript, the native POST remains available.
 
 Run `npm run test:contact` to build both pages and verify markup and submission behavior. Submission tests simulate provider responses and do not send real emails.
 
