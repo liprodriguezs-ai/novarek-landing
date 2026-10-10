@@ -31,6 +31,14 @@ function checkForm(html) {
 }
 
 test('Home provides a native Web3Forms contact form', () => checkForm(home));
+test('Neither page displays the form provider note', async () => {
+  for (const html of [home, await readFile(new URL('../dist/contacto/index.html', import.meta.url), 'utf8')]) {
+    const form = checkForm(html);
+    const visibleText = form.replace(/<[^>]*>/g, '');
+    assert.doesNotMatch(visibleText, /Web3Forms/i);
+    assert.doesNotMatch(form, /submission-note/);
+  }
+});
 test('Contact page renders the same form and links back home', async () => {
   const contact = await readFile(new URL('../dist/contacto/index.html', import.meta.url), 'utf8');
   assert.equal(checkForm(contact), checkForm(home));
