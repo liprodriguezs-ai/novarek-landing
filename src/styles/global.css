@@ -395,10 +395,11 @@ h2 {
 }
 
 .contact {
+	scroll-margin-top: 78px;
 	min-height: 76vh;
 	display: grid;
-	grid-template-columns: minmax(0, 1fr) auto;
-	align-items: end;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	align-items: center;
 	gap: 2rem;
 	background: var(--brand);
 	color: var(--paper-soft);
@@ -423,6 +424,48 @@ h2 {
 
 .email span {
 	margin-left: 0.4rem;
+}
+
+.contact-email,
+.contact-page-link {
+	display: block;
+	width: fit-content;
+	margin-top: 1.5rem;
+	text-decoration: underline;
+	text-underline-offset: 0.3em;
+	overflow-wrap: anywhere;
+}
+
+.contact-email {
+	font-weight: 800;
+}
+
+.contact-page-link {
+	font-size: 0.9rem;
+}
+
+.contact-page h1 {
+	max-width: 12ch;
+	font-size: clamp(3rem, 6vw, 6rem);
+}
+
+.contact-page {
+	min-height: calc(100svh - 78px);
+}
+
+.contact-page-header {
+	position: relative;
+	grid-template-columns: 1fr auto;
+}
+
+.contact-page-header .header-link {
+	display: inline-block;
+}
+
+.contact a:focus-visible,
+.contact-page-header a:focus-visible {
+	outline: 3px solid currentColor;
+	outline-offset: 5px;
 }
 
 footer {

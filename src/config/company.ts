@@ -20,7 +20,7 @@ export const company = {
 		"Creamos sistemas, portales y automatizaciones para empresas que quieren trabajar con más orden y menos tareas manuales.",
 
 	// --- Contacto (✏️ EDITAR con datos reales) ---
-	email: "contacto@novarek.mx", // TODO: reemplazar
+	email: "contact@novarek.mx",
 	whatsapp: "+52 1 55 0000 0000", // TODO: reemplazar
 	whatsappLink: "https://wa.me/5215500000000", // TODO: reemplazar
 	city: "Ciudad de México", // TODO: reemplazar

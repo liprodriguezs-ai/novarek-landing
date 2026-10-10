@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ContactForm from "../components/ContactForm.astro";
 import { company } from "../config/company";
 
 const problems = [
@@ -141,8 +142,10 @@ const process = [
 			<div>
 				<h2>Cuéntanos qué parte de tu operación necesita orden.</h2>
 				<p>Respondemos con una conversación clara: qué se puede hacer, por dónde empezar y qué tendría más impacto primero.</p>
+				<a class="contact-email" href={`mailto:${company.email}`}>{company.email}</a>
+				<a class="contact-page-link" href="/contacto">Ir a la página de contacto <span aria-hidden="true">↗</span></a>
 			</div>
-			<a class="email" href={`mailto:${company.email}`}>{company.email}<span aria-hidden="true">↗</span></a>
+			<ContactForm />
 		</section>
 	</main>
 

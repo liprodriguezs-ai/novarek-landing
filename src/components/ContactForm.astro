@@ -1,0 +1,56 @@
+<form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+	<input type="hidden" name="access_key" value="09202f1c-4bb2-4d21-89aa-f647112e373b" />
+	<div class="field">
+		<label for="contact-name">Nombre</label>
+		<input id="contact-name" type="text" name="name" autocomplete="name" placeholder="Tu nombre" required />
+	</div>
+	<div class="field">
+		<label for="contact-email">Correo electrónico</label>
+		<input id="contact-email" type="email" name="email" autocomplete="email" placeholder="tu@correo.com" required />
+	</div>
+	<div class="field">
+		<label for="contact-message">Cuéntanos tu proyecto</label>
+		<textarea id="contact-message" name="message" rows="5" placeholder="¿Qué necesitas resolver en tu negocio?" required></textarea>
+	</div>
+	<button class="primary-action" type="submit">Enviar mensaje</button>
+	<p class="submission-note">Al enviar, continuarás en Web3Forms para confirmar el resultado.</p>
+</form>
+
+<style>
+	.contact-form {
+		min-width: 0;
+		display: grid;
+		gap: 1.25rem;
+		padding: clamp(1.25rem, 3vw, 2.5rem);
+		background: var(--paper-soft);
+		color: var(--ink);
+		border-radius: 18px;
+	}
+	.field { display: grid; gap: 0.5rem; }
+	label { font-size: 0.9rem; font-weight: 800; }
+	input, textarea {
+		width: 100%;
+		min-width: 0;
+		border: 1px solid var(--muted);
+		border-radius: 8px;
+		padding: 0.85rem 1rem;
+		background: var(--paper);
+		color: var(--ink);
+		font: inherit;
+		font-size: 1rem;
+	}
+	input::placeholder, textarea::placeholder { color: var(--muted); opacity: 1; }
+	textarea { resize: vertical; min-height: 8rem; }
+	input:focus-visible, textarea:focus-visible, button:focus-visible {
+		outline: 3px solid var(--brand-strong);
+		outline-offset: 3px;
+	}
+	button { border: 0; cursor: pointer; font: inherit; font-weight: 800; }
+	.submission-note {
+		margin: 0;
+		max-width: 48ch;
+		color: var(--muted);
+		font-size: 0.85rem;
+		line-height: 1.5;
+	}
+</style>
