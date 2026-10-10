@@ -67,6 +67,18 @@ const structuredData = {
 	<html lang="es-MX">
 	<head>
 		<meta charset="utf-8" />
+		{import.meta.env.PROD && isProduction && (
+			<>
+				<!-- Google tag (gtag.js) -->
+				<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-2RWQQR8ZKN"></script>
+				<script is:inline>
+					window.dataLayer = window.dataLayer || [];
+					function gtag(){dataLayer.push(arguments);}
+					gtag('js', new Date());
+					gtag('config', 'G-2RWQQR8ZKN');
+				</script>
+			</>
+		)}
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" type="image/png" sizes="192x192" href="/brand/icon-192.png" />
 		<link rel="apple-touch-icon" sizes="180x180" href="/brand/apple-touch-icon.png" />
