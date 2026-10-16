@@ -1,0 +1,38 @@
+---
+import { company } from "../config/company";
+
+interface Props {
+	/** "home" uses in-page anchors; "page" links back to the home sections; "minimal" hides the nav. */
+	variant?: "home" | "page" | "minimal";
+	/** Path of the current page, to mark its nav link with aria-current. */
+	current?: string;
+}
+
+const { variant = "page", current } = Astro.props;
+const base = variant === "home" ? "" : "/";
+
+const links = [
+	{ href: `${base}#problemas`, label: "Problemas" },
+	{ href: `${base}#soluciones`, label: "Soluciones" },
+	{ href: "/casos/", label: "Casos" },
+	{ href: `${base}#proceso`, label: "Proceso" },
+];
+---
+
+<header class:list={["masthead", { "contact-page-header": variant === "minimal" }]}>
+	<a class="wordmark" href={variant === "home" ? "#inicio" : "/"} aria-label="Novarek Technologies, inicio">
+		<img src={company.logo} width="284" height="48" alt="" />
+	</a>
+	{variant !== "minimal" && (
+		<nav aria-label="Navegación principal">
+			{links.map((link) => (
+				<a href={link.href} aria-current={current && link.href === current ? "page" : undefined}>{link.label}</a>
+			))}
+		</nav>
+	)}
+	{variant === "minimal" ? (
+		<a class="header-link" href="/">Volver al inicio</a>
+	) : (
+		<a class="header-link" href={variant === "home" ? "#contacto" : "/contacto/"}>Cuéntanos tu proyecto <span aria-hidden="true">↗</span></a>
+	)}
+</header>

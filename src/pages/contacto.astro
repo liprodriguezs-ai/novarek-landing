@@ -1,17 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ContactForm from "../components/ContactForm.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
 import { company } from "../config/company";
 ---
 
 <Layout title="Contacto | Novarek" description="Cuéntanos tu proyecto de software, portal o automatización. Contacta a Novarek por formulario o escribe a contact@novarek.mx.">
-	<header class="masthead contact-page-header">
-		<a class="wordmark" href="/" aria-label="Novarek Technologies, inicio">
-			<img src={company.logo} width="56" height="56" alt="" />
-			<span>NOVAREK</span>
-		</a>
-		<a class="header-link" href="/">Volver al inicio</a>
-	</header>
+	<SiteHeader variant="minimal" />
 	<main>
 		<section class="contact contact-page" id="contacto" aria-labelledby="contact-title">
 			<div>
@@ -22,9 +18,5 @@ import { company } from "../config/company";
 			<ContactForm />
 		</section>
 	</main>
-	<footer>
-		<span>© {company.year} Novarek Technologies</span>
-		<span>Ciudad de México, MX</span>
-		<a href={company.social.facebook} target="_blank" rel="noopener">Facebook ↗</a>
-	</footer>
+	<SiteFooter />
 </Layout>

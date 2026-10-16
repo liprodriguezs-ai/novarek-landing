@@ -1,0 +1,40 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import Layout from "../../layouts/Layout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+
+const cases = (await getCollection("cases")).sort(
+	(a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
+);
+---
+
+<Layout title="Casos de éxito | Novarek" description="Proyectos reales diseñados y construidos por Novarek: sitios, sistemas y automatizaciones en operación.">
+	<SiteHeader current="/casos/" />
+	<main>
+		<section class="cases-index" aria-labelledby="cases-title">
+			<div class="cases-intro">
+				<p class="intro-line">Casos de éxito</p>
+				<h1 id="cases-title">Proyectos reales, construidos por Novarek.</h1>
+				<p>Lo que diseñamos, cómo funciona y por qué lo hicimos así. Cada caso se publica con autorización del cliente.</p>
+			</div>
+			<ul class="case-cards">
+				{cases.map((item) => (
+					<li class="case-card">
+						<a href={`/casos/${item.id}/`}>
+							<Image src={item.data.cover} alt={item.data.coverAlt} widths={[480, 800, 1280]} sizes="(max-width: 760px) 100vw, 50vw" />
+							<div class="case-card-body">
+								<p class="case-card-meta">{item.data.client} · {item.data.sector}</p>
+								<h2>{item.data.title}</h2>
+								<p>{item.data.summary}</p>
+								<span class="case-card-cta">Ver caso <span aria-hidden="true">→</span></span>
+							</div>
+						</a>
+					</li>
+				))}
+			</ul>
+		</section>
+	</main>
+	<SiteFooter />
+</Layout>

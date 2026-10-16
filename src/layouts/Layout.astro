@@ -1,10 +1,7 @@
 ---
 import { company } from "../config/company";
+import { Font } from "astro:assets";
 import "../styles/global.css";
-// Fuentes self-hosted (no Google Fonts en producción)
-import "@fontsource-variable/space-grotesk";
-import "@fontsource-variable/manrope";
-import "@fontsource-variable/jetbrains-mono";
 
 interface Props {
 	title?: string;
@@ -13,7 +10,8 @@ interface Props {
 
 const { title = company.metaTitle, description = company.metaDescription } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, company.siteUrl).toString();
-const socialImage = new URL(company.logo, company.siteUrl).toString();
+const socialImage = new URL(company.ogImage, company.siteUrl).toString();
+const logoUrl = new URL(company.icon, company.siteUrl).toString();
 const isProduction = (import.meta.env.SITE_ENV ?? "production") === "production";
 const robotsContent = isProduction
 	? "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
@@ -26,7 +24,7 @@ const structuredData = {
 			"@id": `${company.siteUrl}/#organization`,
 			name: company.name,
 			url: company.siteUrl,
-			logo: socialImage,
+			logo: logoUrl,
 			sameAs: [company.social.facebook].filter(Boolean),
 		},
 		{
@@ -67,6 +65,10 @@ const structuredData = {
 	<html lang="es-MX">
 	<head>
 		<meta charset="utf-8" />
+		<!-- Fuentes self-hosted (no Google Fonts en producción); precarga solo las del primer pintado -->
+		<Font cssVariable="--font-space-grotesk" preload />
+		<Font cssVariable="--font-manrope" preload />
+		<Font cssVariable="--font-jetbrains-mono" />
 		{import.meta.env.PROD && isProduction && (
 			<>
 				<!-- Google tag (gtag.js) -->
@@ -79,15 +81,15 @@ const structuredData = {
 				</script>
 			</>
 		)}
+		<link rel="icon" href="/favicon.ico" sizes="32x32" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" type="image/png" sizes="192x192" href="/brand/icon-192.png" />
 		<link rel="apple-touch-icon" sizes="180x180" href="/brand/apple-touch-icon.png" />
 		<link rel="manifest" href="/site.webmanifest" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
 		<meta name="robots" content={robotsContent} />
-		<meta name="theme-color" content="#19224b" />
+		<meta name="theme-color" content={company.themeColor} />
 		<link rel="canonical" href={canonicalUrl} />
 		<link rel="sitemap" href="/sitemap.xml" />
 		<meta property="og:title" content={title} />
@@ -97,12 +99,14 @@ const structuredData = {
 		<meta property="og:site_name" content={company.name} />
 		<meta property="og:locale" content="es_MX" />
 		<meta property="og:image" content={socialImage} />
-		<meta property="og:image:alt" content="Logotipo de Novarek Technologies" />
-		<meta name="twitter:card" content="summary" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content="Novarek Technologies: software que ordena tu negocio" />
+		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={socialImage} />
-		<meta name="twitter:image:alt" content="Logotipo de Novarek Technologies" />
+		<meta name="twitter:image:alt" content="Novarek Technologies: software que ordena tu negocio" />
 		<script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
 		<title>{title}</title>

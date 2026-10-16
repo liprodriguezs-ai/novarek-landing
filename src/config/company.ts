@@ -13,7 +13,12 @@ export const company = {
 	// --- Identidad ---
 	name: "Novarek Technologies",
 	shortName: "NOVAREK",
-	logo: "/brand/novarek-technologies-logo.png",
+	// Brandkit v1.1: negative versions, always on navy/dark backgrounds.
+	logo: "/brand/novarek-logo-header-negativo.svg",
+	logoNegative: "/brand/novarek-logo-negativo.svg",
+	icon: "/brand/icon-512.png",
+	ogImage: "/brand/og-image.png",
+	themeColor: "#0C0553",
 	siteUrl,
 	tagline: "Software que ordena tu negocio.",
 	description:
@@ -26,6 +31,18 @@ export const company = {
 	city: "Ciudad de México", // TODO: reemplazar
 	country: "México",
 	location: "Ciudad de México, México", // TODO: reemplazar
+
+	// --- Clientes (banner bajo el hero). Solo con autorización del cliente. ---
+	// Logos pensados para fondo oscuro (el banner es marino).
+	clients: [
+		{
+			name: "HERRAGA Refacciones",
+			logo: "/clients/herraga-logo.svg",
+			url: "https://www.herraga.com",
+			// Slug of its case in src/content/cases/.
+			caseSlug: "herraga",
+		},
+	],
 
 	// --- Redes sociales (✏️ EDITAR; dejar string vacío para ocultar) ---
 	social: {

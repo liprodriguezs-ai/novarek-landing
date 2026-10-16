@@ -10,6 +10,11 @@
 - Inteligencia artificial para empresas
 - Arquitectura cloud e infraestructura
 
+## Casos de éxito
+
+- https://novarek.mx/casos/
+- HERRAGA Refacciones (refacciones diésel): https://novarek.mx/casos/herraga/
+
 ## Contacto
 
 - Correo: contacto@novarek.mx

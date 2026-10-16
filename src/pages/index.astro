@@ -1,7 +1,15 @@
 ---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import ContactForm from "../components/ContactForm.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
 import { company } from "../config/company";
+
+const featuredCase = (await getCollection("cases", ({ data }) => data.featured)).sort(
+	(a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
+)[0];
 
 const problems = [
 	"Tu equipo pierde tiempo copiando datos entre hojas, mensajes y sistemas.",
@@ -63,23 +71,12 @@ const process = [
 ---
 
 <Layout title="Software a medida para ordenar y hacer crecer tu negocio | Novarek" description="Novarek crea sistemas, portales y automatizaciones para empresas que quieren trabajar con más orden, menos tareas manuales y mejor atención a clientes.">
-	<header class="masthead">
-		<a class="wordmark" href="#inicio" aria-label="Novarek Technologies, inicio">
-			<img src={company.logo} width="56" height="56" alt="" />
-			<span>NOVAREK</span>
-		</a>
-		<nav aria-label="Navegación principal">
-			<a href="#problemas">Problemas</a>
-			<a href="#soluciones">Soluciones</a>
-			<a href="#proceso">Proceso</a>
-		</nav>
-		<a class="header-link" href="#contacto">Cuéntanos tu proyecto <span aria-hidden="true">↗</span></a>
-	</header>
+	<SiteHeader variant="home" />
 
 	<main>
 		<section class="hero" id="inicio">
 			<div class="hero-copy">
-				<p class="intro-line">Software a medida para operar con más claridad.</p>
+				<p class="intro-line">Estudio de software a medida</p>
 				<h1>Software que ordena tu negocio.</h1>
 				<p class="hero-lede">Creamos sistemas, portales y automatizaciones para que tu equipo trabaje con menos tareas manuales, mejor seguimiento y más control.</p>
 				<div class="hero-actions">
@@ -87,10 +84,33 @@ const process = [
 					<a class="secondary-action" href="#problemas">Ver cuándo te conviene</a>
 				</div>
 			</div>
+			<svg class="hero-orbits" viewBox="0 0 600 600" aria-hidden="true" focusable="false">
+				<circle class="orbit orbit-outer" cx="300" cy="300" r="299" />
+				<circle class="orbit orbit-inner" cx="300" cy="300" r="272" />
+				<g class="orbit-spin orbit-spin-outer">
+					<circle class="orbit-node orbit-node-outer" cx="88.6" cy="88.6" r="4" />
+				</g>
+				<g class="orbit-spin orbit-spin-inner">
+					<circle class="orbit-node orbit-node-inner" cx="28" cy="300" r="5" />
+				</g>
+			</svg>
 			<div class="hero-proof" aria-label="Resumen de enfoque">
 				<strong>Menos caos.<br />Más control.</strong>
 				<p>Empezamos por entender cómo trabaja tu negocio y construimos solo lo que tiene sentido.</p>
 			</div>
+		</section>
+
+		<section class="clients" aria-labelledby="clients-title">
+			<p class="clients-label" id="clients-title">Empresas que ya trabajan con Novarek</p>
+			<ul class="clients-list">
+				{company.clients.map((client) => (
+					<li>
+						<a href={`/casos/${client.caseSlug}/`} aria-label={`${client.name}: ver caso de éxito`}>
+							<img src={client.logo} width="98" height="64" alt={client.name} loading="lazy" />
+						</a>
+					</li>
+				))}
+			</ul>
 		</section>
 
 		<section class="problems" id="problemas">
@@ -123,6 +143,27 @@ const process = [
 			</ul>
 		</section>
 
+		{featuredCase && (
+			<section class="case" id="casos" aria-labelledby="case-title">
+				<div class="case-copy">
+					<p class="intro-line">Caso de éxito</p>
+					<h2 id="case-title">{featuredCase.data.title}</h2>
+					<p>{featuredCase.data.summary}</p>
+					<h3>Lo que construimos</h3>
+					<ul class="case-list">
+						{featuredCase.data.built.map((item) => <li>{item}</li>)}
+					</ul>
+					<div class="case-links">
+						<a class="case-link" href={`/casos/${featuredCase.id}/`}>Ver caso completo <span aria-hidden="true">→</span></a>
+						<a class="case-link case-link-quiet" href="/casos/">Todos los casos</a>
+					</div>
+				</div>
+				<figure class="case-shot">
+					<Image src={featuredCase.data.cover} alt={featuredCase.data.coverAlt} widths={[640, 960, 1280]} sizes="(max-width: 980px) 100vw, 55vw" />
+				</figure>
+			</section>
+		)}
+
 		<section class="process" id="proceso">
 			<div class="section-intro">
 				<h2>Un proceso claro, sin vueltas innecesarias.</h2>
@@ -149,9 +190,5 @@ const process = [
 		</section>
 	</main>
 
-	<footer>
-		<span>© {company.year} Novarek Technologies</span>
-		<span>Ciudad de México, MX</span>
-		<a href={company.social.facebook} target="_blank" rel="noopener">Facebook ↗</a>
-	</footer>
+	<SiteFooter />
 </Layout>
