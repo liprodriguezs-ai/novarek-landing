@@ -11,8 +11,8 @@ const cases = defineCollection({
 			title: z.string(),
 			client: z.string(),
 			sector: z.string(),
-			/** One or two sentences for cards and the page lede. */
-			summary: z.string(),
+			/** Used for cards, the page lede and the meta description: ≤ 125 chars so social previews don't truncate it. */
+			summary: z.string().max(125),
 			url: z.url(),
 			cover: image(),
 			coverAlt: z.string(),

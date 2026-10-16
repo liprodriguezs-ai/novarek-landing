@@ -2,7 +2,7 @@
 title: "HERRAGA Refacciones: del catálogo por motor a la cotización en WhatsApp."
 client: "HERRAGA Refacciones"
 sector: "Refacciones diésel"
-summary: "Diseñamos y construimos el sitio de HERRAGA para que sus clientes encuentren la pieza de su motor y pidan cotización directo por WhatsApp."
+summary: "Diseñamos el sitio de HERRAGA para que sus clientes encuentren la pieza de su motor y coticen directo por WhatsApp."
 url: "https://www.herraga.com"
 cover: "../../assets/cases/herraga-sitio.webp"
 coverAlt: "Página de inicio de herraga.com: refacciones diésel para motores de rango pesado, con botones para cotizar por WhatsApp y buscar por motor."

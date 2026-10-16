@@ -53,10 +53,10 @@ export const company = {
 		github: "",
 	},
 
-	// --- SEO / meta ---
+	// --- SEO / meta (title ≤ 60 y description ≤ 125 caracteres para que no se corten) ---
 	metaTitle: "Software a medida para ordenar tu negocio | Novarek",
 	metaDescription:
-		"Novarek crea sistemas, portales y automatizaciones para empresas que quieren trabajar con más orden, menos tareas manuales y mejor atención a clientes.",
+		"Novarek crea sistemas, portales y automatizaciones a medida para trabajar con más orden y menos tareas manuales.",
 
 	// --- Año actual (footer) ---
 	year: "2026",
