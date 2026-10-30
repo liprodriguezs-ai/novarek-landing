@@ -42,6 +42,12 @@ export const company = {
 			// Slug of its case in src/content/cases/.
 			caseSlug: "herraga",
 		},
+		{
+			name: "Metatron Service",
+			logo: "/clients/metatron-logo.svg",
+			url: "https://www.metatronservice.com",
+			caseSlug: "metatron",
+		},
 	],
 
 	// --- Redes sociales (✏️ EDITAR; dejar string vacío para ocultar) ---
