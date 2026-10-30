@@ -9,7 +9,7 @@ coverAlt: "Página de inicio de metatronservice.com: una plataforma petrolera il
 built:
   - "Portada con un recorrido en video, de la plataforma offshore a tierra firme, que avanza con el scroll."
   - "Seis especialidades con su alcance: obra eléctrica, fotovoltaicos, aire, aislamiento, civil y estructural."
-  - "Solicitud de cotización que se envía directo por WhatsApp o correo."
+  - "Solicitud de cotización que llega directo al WhatsApp del equipo."
   - "Identidad renovada: logotipo en vector e imágenes para compartir en redes."
 publishedAt: 2026-10-30
 featured: true
@@ -37,7 +37,7 @@ Una galería con fotos de obras ejecutadas por el equipo, el proceso de trabajo 
 
 ### Cotización directa
 
-Un formulario corto pide nombre, empresa, tipo de instalación (offshore o terrestre), especialidad y alcance. Al enviarlo, abre WhatsApp o el correo con el mensaje listo; el sitio no guarda los datos.
+Un formulario corto pide nombre, empresa, tipo de instalación (offshore o terrestre), especialidad y alcance. Al enviarlo, abre WhatsApp con el mensaje listo; el sitio no guarda los datos.
 
 ### Identidad y presencia en buscadores
 
