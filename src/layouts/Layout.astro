@@ -113,5 +113,10 @@ const structuredData = {
 	</head>
 	<body>
 		<slot />
+		<script>
+			import { trackContactLinks } from "../lib/track";
+
+			trackContactLinks();
+		</script>
 	</body>
 </html>

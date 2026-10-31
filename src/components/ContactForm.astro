@@ -27,6 +27,21 @@
 </form>
 
 <script>
+	// GA4 conversion (same event name as herraga and Metatron). Kept inline so the script stays a classic
+	// script; tracking must never break the submission.
+	function trackSubmit() {
+		try {
+			const w = globalThis as typeof globalThis & { dataLayer?: unknown[] };
+			w.dataLayer = w.dataLayer || [];
+			(function gtag(..._args: unknown[]) {
+				// eslint-disable-next-line prefer-rest-params
+				w.dataLayer!.push(arguments);
+			})("event", "contact_form_submit", { channel: "email" });
+		} catch {
+			// Analytics is optional.
+		}
+	}
+
 	for (const form of document.querySelectorAll<HTMLFormElement>("[data-email-form]")) {
 		const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
 		const status = form.querySelector<HTMLElement>("[data-form-status]");
@@ -58,6 +73,7 @@
 				if (!response.ok || result.success !== true) throw new Error("Submission failed");
 
 				sent = true;
+				trackSubmit();
 				form.reset();
 				button.textContent = "Mensaje enviado";
 				status.dataset.state = "success";
