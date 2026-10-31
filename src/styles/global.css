@@ -448,6 +448,17 @@ main section[id] {
 	gap: 1rem 2rem;
 }
 
+/* Alternate featured cases on the home: image left, copy right (desktop only). */
+@media (min-width: 981px) {
+	.case--reverse {
+		grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+	}
+
+	.case--reverse .case-shot {
+		order: -1;
+	}
+}
+
 .case-link-quiet {
 	font-weight: 600;
 	color: var(--muted);

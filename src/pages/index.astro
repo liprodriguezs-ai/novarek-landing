@@ -7,9 +7,10 @@ import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import { company } from "../config/company";
 
-const featuredCase = (await getCollection("cases", ({ data }) => data.featured)).sort(
+// Every featured case is shown on the home, newest first.
+const featuredCases = (await getCollection("cases", ({ data }) => data.featured)).sort(
 	(a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
-)[0];
+);
 
 const problems = [
 	"Tu equipo pierde tiempo copiando datos entre hojas, mensajes y sistemas.",
@@ -143,11 +144,15 @@ const process = [
 			</ul>
 		</section>
 
-		{featuredCase && (
-			<section class="case" id="casos" aria-labelledby="case-title">
+		{featuredCases.map((featuredCase, index) => (
+			<section
+				class:list={["case", { "case--reverse": index % 2 === 1 }]}
+				id={index === 0 ? "casos" : undefined}
+				aria-labelledby={`case-title-${featuredCase.id}`}
+			>
 				<div class="case-copy">
 					<p class="intro-line">Caso de éxito</p>
-					<h2 id="case-title">{featuredCase.data.title}</h2>
+					<h2 id={`case-title-${featuredCase.id}`}>{featuredCase.data.title}</h2>
 					<p>{featuredCase.data.summary}</p>
 					<h3>Lo que construimos</h3>
 					<ul class="case-list">
@@ -162,7 +167,7 @@ const process = [
 					<Image src={featuredCase.data.cover} alt={featuredCase.data.coverAlt} widths={[640, 960, 1280]} sizes="(max-width: 980px) 100vw, 55vw" />
 				</figure>
 			</section>
-		)}
+		))}
 
 		<section class="process" id="proceso">
 			<div class="section-intro">
