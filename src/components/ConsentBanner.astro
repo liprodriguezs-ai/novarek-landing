@@ -1,0 +1,109 @@
+---
+// Cookie consent banner. Google Analytics is NOT loaded until the visitor accepts
+// (Política de Cookies §7: non-essential technologies are never activated before consent).
+// The choice lives in localStorage ("novarek-consent": "granted" | "denied"); the footer's
+// "Preferencias de cookies" button reopens the banner to change it.
+---
+
+<div class="consent" id="consent-banner" role="region" aria-label="Aviso de cookies" hidden>
+	<p>
+		Usamos cookies de analítica (Google Analytics) para entender cómo se usa el sitio y mejorarlo. Sólo se activan si
+		las aceptas. Más información en la <a href="/politica-de-cookies/">Política de Cookies</a>.
+	</p>
+	<div class="consent-actions">
+		<button type="button" class="consent-accept" data-consent="granted">Aceptar</button>
+		<button type="button" class="consent-reject" data-consent="denied">Rechazar</button>
+	</div>
+</div>
+
+<script>
+	import { CONSENT_KEY, readConsent, applyConsent } from "../lib/consent";
+
+	const banner = document.getElementById("consent-banner");
+
+	if (banner) {
+		const stored = readConsent();
+		if (stored === "granted") applyConsent("granted");
+		if (!stored) banner.hidden = false;
+
+		banner.querySelectorAll<HTMLButtonElement>("[data-consent]").forEach((button) => {
+			button.addEventListener("click", () => {
+				const value = button.dataset.consent === "granted" ? "granted" : "denied";
+				try {
+					localStorage.setItem(CONSENT_KEY, value);
+				} catch {
+					// Storage blocked: the choice still applies to this visit.
+				}
+				applyConsent(value);
+				banner.hidden = true;
+			});
+		});
+
+		document.querySelectorAll("[data-open-consent]").forEach((trigger) => {
+			trigger.addEventListener("click", () => {
+				banner.hidden = false;
+				banner.querySelector<HTMLButtonElement>(".consent-accept")?.focus();
+			});
+		});
+	}
+</script>
+
+<style>
+	.consent {
+		position: fixed;
+		z-index: 50;
+		right: 1rem;
+		bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+		left: 1rem;
+		max-width: 28rem;
+		margin-left: auto;
+		padding: 1.25rem;
+		background: var(--paper-soft);
+		color: var(--ink);
+		border: 1px solid var(--line);
+		border-radius: 18px;
+		box-shadow: 0 18px 50px rgba(12, 5, 83, 0.22);
+	}
+	.consent[hidden] {
+		display: none;
+	}
+	.consent p {
+		margin: 0;
+		font-size: 0.9rem;
+		line-height: 1.55;
+	}
+	.consent a {
+		color: var(--brand-strong);
+		font-weight: 700;
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+	.consent-actions {
+		display: flex;
+		gap: 0.75rem;
+		margin-top: 1rem;
+	}
+	.consent button {
+		flex: 1;
+		min-height: 2.75rem;
+		border-radius: 999px;
+		font: inherit;
+		font-weight: 800;
+		cursor: pointer;
+	}
+	.consent-accept {
+		border: 0;
+		background: var(--ink);
+		color: var(--paper-soft);
+	}
+	.consent-reject {
+		border: 1px solid var(--ink);
+		background: transparent;
+		color: var(--ink);
+	}
+	.consent a:focus-visible,
+	.consent button:focus-visible {
+		outline: 3px solid var(--brand-strong);
+		outline-offset: 3px;
+	}
+</style>

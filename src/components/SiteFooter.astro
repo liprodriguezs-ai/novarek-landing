@@ -1,10 +1,17 @@
 ---
 import { company } from "../config/company";
+import { legalDocuments } from "../config/legal";
 ---
 
 <footer>
 	<img class="footer-logo" src={company.logoNegative} width="332" height="56" alt="Novarek Technologies" loading="lazy" />
 	<span>© {company.year} Novarek Technologies</span>
 	<span>Ciudad de México, MX</span>
+	<nav class="footer-legal" aria-label="Documentos legales">
+		{legalDocuments.filter((doc) => doc.href !== "/aviso-de-privacidad-simplificado/").map((doc) => (
+			<a href={doc.href}>{doc.label}</a>
+		))}
+		<button type="button" class="footer-consent" data-open-consent>Preferencias de cookies</button>
+	</nav>
 	<a href={company.social.facebook} target="_blank" rel="noopener">Facebook ↗</a>
 </footer>

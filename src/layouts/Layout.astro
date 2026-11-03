@@ -2,6 +2,7 @@
 import { company } from "../config/company";
 import { Font } from "astro:assets";
 import "../styles/global.css";
+import ConsentBanner from "../components/ConsentBanner.astro";
 
 interface Props {
 	title?: string;
@@ -71,13 +72,14 @@ const structuredData = {
 		<Font cssVariable="--font-jetbrains-mono" />
 		{import.meta.env.PROD && isProduction && (
 			<>
-				<!-- Google tag (gtag.js) -->
-				<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-2RWQQR8ZKN"></script>
+				<!-- Google tag queue only: gtag.js is injected by ConsentBanner after the visitor accepts. -->
 				<script is:inline>
 					window.dataLayer = window.dataLayer || [];
 					function gtag(){dataLayer.push(arguments);}
+					gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
 					gtag('js', new Date());
 					gtag('config', 'G-2RWQQR8ZKN');
+					window.__novarekAnalytics = true;
 				</script>
 			</>
 		)}
@@ -113,6 +115,7 @@ const structuredData = {
 	</head>
 	<body>
 		<slot />
+		<ConsentBanner />
 		<script>
 			import { trackContactLinks } from "../lib/track";
 

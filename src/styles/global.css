@@ -913,6 +913,29 @@ footer {
 	letter-spacing: 0.04em;
 }
 
+.footer-legal {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem 1.2rem;
+}
+
+.footer-consent {
+	padding: 0;
+	border: 0;
+	background: none;
+	color: inherit;
+	font: inherit;
+	letter-spacing: inherit;
+	text-transform: inherit;
+	cursor: pointer;
+}
+
+footer a:focus-visible,
+.footer-consent:focus-visible {
+	outline: 3px solid currentColor;
+	outline-offset: 4px;
+}
+
 .footer-logo {
 	display: block;
 	width: auto;
