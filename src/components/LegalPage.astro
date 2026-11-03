@@ -1,0 +1,157 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SiteHeader from "./SiteHeader.astro";
+import SiteFooter from "./SiteFooter.astro";
+import { legalDocuments } from "../config/legal";
+
+interface Props {
+	title: string;
+	metaTitle: string;
+	description: string;
+	/** Short line under the title, e.g. the scope of the document. */
+	subtitle?: string;
+	updated: string;
+}
+
+const { title, metaTitle, description, subtitle, updated } = Astro.props;
+const currentPath = Astro.url.pathname.replace(/\/?$/, "/");
+---
+
+<Layout title={metaTitle} description={description}>
+	<SiteHeader variant="page" />
+	<main class="legal">
+		<article class="legal-article" aria-labelledby="legal-title">
+			<p class="legal-kicker">Documentos legales</p>
+			<h1 id="legal-title">{title}</h1>
+			{subtitle && <p class="legal-subtitle">{subtitle}</p>}
+			<p class="legal-updated">Última actualización: {updated}</p>
+			<div class="legal-body">
+				<slot />
+			</div>
+		</article>
+		<nav class="legal-nav" aria-label="Documentos legales">
+			<p class="legal-kicker">Otros documentos</p>
+			<ul>
+				{legalDocuments.map((doc) => (
+					<li>
+						<a href={doc.href} aria-current={doc.href === currentPath ? "page" : undefined}>{doc.label}</a>
+					</li>
+				))}
+			</ul>
+		</nav>
+	</main>
+	<SiteFooter />
+</Layout>
+
+<style>
+	.legal {
+		display: grid;
+		grid-template-columns: minmax(0, 46rem) minmax(12rem, 16rem);
+		justify-content: center;
+		gap: clamp(2rem, 5vw, 5rem);
+		padding: clamp(2.5rem, 6vw, 5rem) clamp(1rem, 3vw, 3.6rem) clamp(4rem, 8vw, 6rem);
+	}
+	.legal-article {
+		min-width: 0;
+	}
+	.legal-kicker {
+		margin: 0;
+		color: var(--brand-strong);
+		font: 700 0.75rem var(--mono);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+	.legal h1 {
+		max-width: none;
+		margin: 0.8rem 0 0;
+		font-size: clamp(2rem, 4.2vw, 3.2rem);
+		line-height: 1.05;
+		text-wrap: balance;
+	}
+	.legal-subtitle {
+		margin: 0.9rem 0 0;
+		color: var(--ink);
+		font-weight: 700;
+	}
+	.legal-updated {
+		margin: 0.6rem 0 0;
+		color: var(--muted);
+		font-size: 0.9rem;
+	}
+	.legal-body {
+		margin-top: 2.5rem;
+		color: var(--ink);
+		font-size: 1rem;
+		line-height: 1.7;
+		overflow-wrap: anywhere;
+	}
+	.legal-body :global(h2) {
+		max-width: none;
+		margin: 2.4rem 0 0.8rem;
+		font-size: clamp(1.2rem, 2vw, 1.45rem);
+		line-height: 1.25;
+		letter-spacing: 0;
+	}
+	.legal-body :global(p),
+	.legal-body :global(ul) {
+		margin: 0 0 1rem;
+	}
+	.legal-body :global(ul) {
+		padding-left: 1.3rem;
+	}
+	.legal-body :global(li + li) {
+		margin-top: 0.4rem;
+	}
+	.legal-body :global(a) {
+		color: var(--brand-strong);
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+	.legal-body :global(a:focus-visible),
+	.legal-nav a:focus-visible {
+		outline: 3px solid var(--brand-strong);
+		outline-offset: 3px;
+	}
+	/* Reset the global header `nav` styles (uppercase, hidden on small screens). */
+	.legal-nav {
+		display: block;
+		font-size: 1rem;
+		font-weight: 400;
+		text-transform: none;
+		letter-spacing: 0;
+		align-self: start;
+		position: sticky;
+		top: 2rem;
+	}
+	.legal-nav ul {
+		margin: 1rem 0 0;
+		padding: 0;
+		list-style: none;
+		display: grid;
+		gap: 0.75rem;
+	}
+	.legal-nav a {
+		color: var(--ink);
+		font-weight: 700;
+		text-decoration: underline;
+		text-decoration-color: var(--line);
+		text-underline-offset: 0.25em;
+	}
+	.legal-nav a:hover {
+		text-decoration-color: currentColor;
+	}
+	.legal-nav a[aria-current="page"] {
+		color: var(--brand-strong);
+		text-decoration-color: currentColor;
+	}
+	@media (max-width: 980px) {
+		.legal {
+			grid-template-columns: minmax(0, 1fr);
+		}
+		.legal-nav {
+			position: static;
+			border-top: 1px solid var(--line);
+			padding-top: 2rem;
+		}
+	}
+</style>

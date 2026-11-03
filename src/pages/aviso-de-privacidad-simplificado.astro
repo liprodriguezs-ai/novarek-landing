@@ -1,0 +1,58 @@
+---
+import LegalPage from "../components/LegalPage.astro";
+import { company } from "../config/company";
+import { legalUpdatedAt } from "../config/legal";
+
+const mail = `mailto:${company.email}`;
+---
+
+<LegalPage
+	title="Aviso de Privacidad Simplificado"
+	metaTitle="Aviso de Privacidad Simplificado | Novarek"
+	description="Versión breve del aviso de privacidad de Novarek Technologies: responsable, datos, finalidades y cómo limitar su uso."
+	updated={legalUpdatedAt}
+>
+	<h2>Responsable y domicilio</h2>
+	<p>
+		NOVAREK TECHNOLOGIES, S.A. de C.V. («NOVAREK»), con nombre comercial Novarek Technologies y domicilio en calle
+		Alfonso Priani número 1, entre Castrejón y Revolución, colonia La Guadalupe, alcaldía La Magdalena Contreras, C.P.
+		10820, Ciudad de México, México, es responsable del tratamiento de los datos personales recabados a través de su
+		sitio web y canales de contacto.
+	</p>
+
+	<h2>Datos personales sujetos a tratamiento</h2>
+	<p>
+		Podremos recabar, según corresponda, nombre, apellidos, correo electrónico, teléfono, empresa, cargo, información
+		proporcionada en mensajes o solicitudes de cotización y datos técnicos de navegación que permitan identificar a una
+		persona, únicamente cuando se obtengan efectivamente. No solicitamos datos personales sensibles mediante el
+		formulario general de contacto.
+	</p>
+
+	<h2>Finalidades del tratamiento</h2>
+	<p>
+		<strong>Necesarias:</strong> atender solicitudes de contacto, información y cotización; evaluar requerimientos
+		tecnológicos; elaborar propuestas; comunicarnos respecto de solicitudes; administrar, cuando proceda, relaciones
+		comerciales y contractuales; brindar seguimiento y soporte; cumplir obligaciones legales y proteger la operación y
+		seguridad del sitio.
+	</p>
+	<p>
+		<strong>Secundarias, cuando se habiliten:</strong> enviar noticias, invitaciones, promociones o información sobre
+		otros productos y servicios de NOVAREK, así como encuestas no indispensables. Estas finalidades son opcionales y su
+		negativa no afectará la atención de solicitudes.
+	</p>
+
+	<h2>Opciones para limitar el uso o divulgación</h2>
+	<p>
+		Puede solicitar que sus datos no sean utilizados para finalidades secundarias, así como plantear solicitudes de
+		limitación de uso o divulgación, escribiendo a <a href={mail}>{company.email}</a>, con el asunto «Limitación de
+		datos personales» o «Negativa a finalidades secundarias». También podrá ejercer sus derechos ARCO y solicitar la
+		revocación del consentimiento por los medios y conforme al procedimiento establecidos en el <a href="/aviso-de-privacidad/">Aviso de Privacidad Integral</a>.
+	</p>
+
+	<h2>Consulta del aviso integral y contacto</h2>
+	<p>
+		El <a href="/aviso-de-privacidad/">Aviso de Privacidad Integral</a>, que contiene información sobre transferencias,
+		derechos ARCO, revocación, conservación, medidas de seguridad y modificaciones, está disponible mediante un enlace
+		directo y visible desde <a href="/">https://novarek.mx/</a>. Correo: <a href={mail}>{company.email}</a>.
+	</p>
+</LegalPage>

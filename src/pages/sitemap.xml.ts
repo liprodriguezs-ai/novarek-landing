@@ -1,5 +1,6 @@
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
+import { legalDocuments } from "../config/legal";
 
 // Generated so new cases appear automatically. Paths match the canonical URLs (trailing slash).
 export const GET: APIRoute = async ({ site }) => {
@@ -17,6 +18,7 @@ export const GET: APIRoute = async ({ site }) => {
 			lastmod: item.data.publishedAt.toISOString().slice(0, 10),
 		})),
 		{ path: "/contacto/", priority: "0.6" },
+		...legalDocuments.map((doc) => ({ path: doc.href, priority: "0.3" })),
 	];
 
 	const urls = pages

@@ -1,0 +1,229 @@
+---
+import LegalPage from "../components/LegalPage.astro";
+import { company } from "../config/company";
+import { legalUpdatedAt } from "../config/legal";
+
+const mail = `mailto:${company.email}`;
+---
+
+<LegalPage
+	title="Aviso de Privacidad Integral"
+	metaTitle="Aviso de Privacidad | Novarek"
+	description="Aviso de privacidad integral de Novarek Technologies: datos que tratamos, finalidades, transferencias y derechos ARCO."
+	subtitle="Sitio web corporativo"
+	updated={legalUpdatedAt}
+>
+	<p>
+		¿Prefieres la versión breve? Consulta el <a href="/aviso-de-privacidad-simplificado/">Aviso de Privacidad Simplificado</a>.
+	</p>
+
+	<h2>1. Identidad y domicilio del responsable</h2>
+	<p>
+		NOVAREK TECHNOLOGIES, S.A. de C.V. (en adelante, «NOVAREK»), que utiliza comercialmente el nombre «Novarek
+		Technologies», con domicilio en calle Alfonso Priani número 1, entre Castrejón y Revolución, colonia La Guadalupe,
+		alcaldía La Magdalena Contreras, código postal 10820, Ciudad de México, México, es responsable de decidir sobre el
+		tratamiento de los datos personales que recabe por medio de su sitio web <a href="/">https://novarek.mx/</a>, sus
+		formularios de contacto y las comunicaciones comerciales relacionadas. Correo de atención: <a href={mail}>{company.email}</a>.
+	</p>
+
+	<h2>2. Marco normativo y alcance</h2>
+	<p>
+		Este aviso se emite de conformidad con los artículos 1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 y demás aplicables
+		de la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, publicada el 20 de marzo de
+		2025 y reformada el 14 de noviembre de 2025, así como las disposiciones reglamentarias y lineamientos aplicables en
+		lo que resulten compatibles y vigentes. Se dirige a visitantes, personas que soliciten información o cotizaciones,
+		prospectos, contactos de clientes y proveedores, y demás personas físicas cuyos datos se obtengan en relación con el
+		sitio institucional. Este aviso no sustituye los avisos específicos que correspondan a relaciones laborales,
+		procesos de reclutamiento o a productos y plataformas independientes, incluido KIVO7, cuando éstos impliquen
+		tratamientos diferenciados.
+	</p>
+
+	<h2>3. Datos personales que pueden recabarse</h2>
+	<p>
+		Según la interacción y únicamente cuando resulten necesarios, NOVAREK podrá tratar: (a) datos de identificación y
+		contacto: nombre, apellidos, correo electrónico, número telefónico, cargo o puesto y firma cuando proceda; (b) datos
+		profesionales y empresariales vinculados con una persona física: empresa u organización representada, área de
+		trabajo y datos de contacto laboral; (c) información de solicitudes: servicio de interés, descripción de
+		necesidades tecnológicas, mensajes, archivos o información que el titular voluntariamente proporcione y registro de
+		comunicaciones; (d) datos administrativos, contractuales y de facturación cuando exista una relación comercial, en
+		la medida necesaria para su gestión; y (e) datos técnicos de navegación que, por sí solos o asociados con otros
+		elementos, permitan identificar a una persona, tales como dirección IP, identificadores de dispositivo o sesión,
+		navegador, registros de acceso y preferencias técnicas, cuando efectivamente se recaben.
+	</p>
+	<p>
+		NOVAREK no solicita datos personales sensibles a través del formulario institucional ni los requiere ordinariamente
+		para responder consultas. Se pide no enviar información de salud, biométrica, ideología, creencias, datos
+		financieros confidenciales u otra información sensible por formularios generales. Si excepcionalmente se requirieran
+		datos sensibles, se informará la finalidad concreta y se obtendrá el consentimiento expreso y por escrito cuando
+		legalmente corresponda.
+	</p>
+
+	<h2>4. Medios de obtención</h2>
+	<p>
+		Los datos podrán obtenerse directamente de su titular mediante formularios, correo electrónico, llamadas, reuniones,
+		solicitudes de propuesta o documentación comercial; automáticamente, en la medida en que existan herramientas
+		técnicas de operación y seguridad del sitio; o indirectamente de representantes de organizaciones y fuentes
+		lícitas, sujeto a las obligaciones de información que correspondan. No se presume la existencia de herramientas
+		analíticas, publicitarias o de terceros por el solo hecho de mencionarlas en este aviso.
+	</p>
+
+	<h2>5. Finalidades primarias y necesarias</h2>
+	<p>
+		Los datos se tratarán para: (i) recibir, identificar, gestionar y responder solicitudes de contacto, información,
+		asesoría, demostraciones y cotización; (ii) evaluar requerimientos y alcances técnicos y elaborar propuestas; (iii)
+		establecer y mantener comunicación con prospectos y clientes sobre sus solicitudes; (iv) preparar, formalizar,
+		administrar y dar seguimiento a relaciones contractuales, proyectos y servicios efectivamente contratados; (v)
+		proporcionar soporte, seguimiento y atención de consultas, incidencias o reclamaciones; (vi) gestionar pagos,
+		facturación y cumplimiento de obligaciones legales y fiscales, cuando resulte aplicable; (vii) verificar la
+		seguridad, integridad y funcionamiento del sitio y prevenir usos indebidos; y (viii) atender requerimientos
+		legalmente fundados de autoridades competentes. Estas finalidades se vinculan con la relación solicitada o
+		existente y no requieren autorización adicional cuando opere una excepción legal al consentimiento; en los demás
+		supuestos se recabará el consentimiento que corresponda.
+	</p>
+
+	<h2>6. Finalidades secundarias y opción de negativa</h2>
+	<p>
+		Sólo cuando sean aplicables, NOVAREK podrá utilizar datos de contacto para enviar boletines, invitaciones,
+		novedades, campañas promocionales, información sobre otros productos o servicios, y realizar encuestas de
+		satisfacción no indispensables para la relación principal. Estas finalidades no son necesarias para atender una
+		solicitud ni para contratar servicios. El titular podrá negarse desde la recopilación mediante una opción separada
+		de aceptación, si se habilita, o posteriormente mediante correo a <a href={mail}>{company.email}</a> con el asunto
+		«Negativa a finalidades secundarias». La negativa no será motivo para denegar servicios o atención. NOVAREK no debe
+		activar envíos publicitarios por el mero hecho de recibir una solicitud de contacto cuando legalmente se requiera
+		consentimiento.
+	</p>
+
+	<h2>7. Consentimiento y supuestos de excepción</h2>
+	<p>
+		NOVAREK solicitará el consentimiento de manera expresa o tácita, según la naturaleza del dato, la finalidad y la
+		normativa aplicable, sin entender que la mera navegación autoriza tratamientos que requieran consentimiento
+		específico. Cuando proceda consentimiento expreso o expreso por escrito, se implementará el mecanismo
+		correspondiente. El consentimiento podrá revocarse conforme al procedimiento señalado en este aviso, sin efectos
+		retroactivos y sin perjuicio de los tratamientos necesarios por obligaciones legales o contractuales.
+	</p>
+
+	<h2>8. Transferencias nacionales e internacionales</h2>
+	<p>
+		NOVAREK no comercializa datos personales de los titulares. Podrá comunicar datos a autoridades competentes cuando
+		exista obligación legal, mandamiento fundado o supuesto de excepción previsto por la ley; a entidades relacionadas o
+		terceros en los supuestos legalmente permitidos; y a otros destinatarios únicamente cuando la transferencia sea
+		necesaria y lícita y se cuente con el consentimiento correspondiente, si éste es exigible. Antes de realizar
+		transferencias que requieran consentimiento, NOVAREK informará al titular sobre destinatarios, finalidades y
+		mecanismos de aceptación o rechazo conforme a la ley.
+	</p>
+	<p>
+		La prestación de servicios de alojamiento, correo, soporte, infraestructura y procesamiento de datos por
+		proveedores que actúen por cuenta e instrucciones de NOVAREK constituye, en su caso, una remisión a encargados, no
+		necesariamente una transferencia; se sujetará a contratos, instrucciones, confidencialidad y medidas de seguridad
+		apropiadas. Si tales servicios implican acceso desde otros países, se evaluarán y documentarán las salvaguardas
+		correspondientes.
+	</p>
+
+	<h2>9. Medidas de seguridad y confidencialidad</h2>
+	<p>
+		NOVAREK adoptará medidas administrativas, técnicas y físicas razonables y proporcionales al riesgo para proteger
+		los datos contra daño, pérdida, alteración, destrucción, uso, acceso o tratamiento no autorizado. Entre las medidas
+		que correspondan podrán incluirse controles de acceso, gestión de credenciales, copias de seguridad, cifrado en
+		tránsito, registro de incidentes, obligaciones de confidencialidad, revisión de proveedores y eliminación segura.
+		Ninguna transmisión por internet puede garantizar seguridad absoluta. Cuando ocurra una vulneración que afecte
+		significativamente derechos patrimoniales o morales de los titulares, NOVAREK realizará las notificaciones
+		legalmente procedentes.
+	</p>
+
+	<h2>10. Conservación, bloqueo y supresión</h2>
+	<p>
+		Los datos se conservarán únicamente durante el tiempo necesario para cumplir las finalidades informadas y, en su
+		caso, los periodos derivados de obligaciones fiscales, mercantiles, contractuales, probatorias o de prescripción
+		legal. Concluidos dichos periodos, serán suprimidos, previo bloqueo cuando legalmente corresponda. Los plazos
+		concretos dependerán de la categoría de información y del tipo de relación; NOVAREK deberá documentarlos en su
+		política interna de conservación, sin conservar indefinidamente información de prospectos sin justificación.
+	</p>
+
+	<h2>11. Derechos ARCO</h2>
+	<p>
+		La persona titular o su representante legal podrá solicitar acceso a sus datos personales y a las condiciones de su
+		tratamiento; rectificación de datos inexactos o incompletos; cancelación cuando legalmente proceda; u oposición al
+		tratamiento por causa legítima o en los supuestos previstos por la ley. Para ello, deberá remitir su solicitud a <a href={mail}>{company.email}</a>, con asunto «Solicitud de derechos ARCO», incluyendo: nombre y medio para
+		recibir notificaciones; documentos que acrediten su identidad y, en su caso, representación; descripción clara de
+		los datos y del derecho que desea ejercer; y cualquier elemento que facilite su localización. En rectificación
+		deberá señalar las modificaciones solicitadas y aportar documentación de sustento.
+	</p>
+	<p>
+		NOVAREK comunicará la determinación en un plazo máximo de veinte días hábiles contado desde la recepción de la
+		solicitud, ampliable por una sola vez por periodo igual cuando esté justificado; si procede, la hará efectiva
+		dentro de los quince días hábiles siguientes a la comunicación de la respuesta, con posibilidad de ampliación legal
+		en los mismos términos. Si faltan elementos, podrá requerirse información adicional en los plazos legales. El
+		ejercicio de derechos es gratuito, sin perjuicio de costos de reproducción o envío legalmente permitidos.
+	</p>
+
+	<h2>12. Revocación del consentimiento</h2>
+	<p>
+		El titular podrá solicitar la revocación de su consentimiento por correo a <a href={mail}>{company.email}</a> con el
+		asunto «Revocación de consentimiento», identificando los datos y finalidades involucrados. NOVAREK evaluará la
+		solicitud conforme a la legislación y comunicará su determinación mediante el mismo canal, salvo que el titular
+		indique otro medio idóneo. La revocación no tendrá efectos retroactivos ni impedirá el tratamiento exigido por una
+		obligación legal o necesario para cumplir obligaciones contractuales vigentes cuando exista fundamento jurídico.
+	</p>
+
+	<h2>13. Limitación de uso y divulgación</h2>
+	<p>
+		El titular podrá solicitar que sus datos no se utilicen para comunicaciones promocionales o determinadas
+		finalidades secundarias escribiendo a <a href={mail}>{company.email}</a> con el asunto «Limitación de uso de
+		datos». NOVAREK registrará y atenderá la solicitud y, cuando proceda, incluirá los datos de contacto en listas
+		internas de exclusión. Cuando corresponda, el titular podrá acudir a mecanismos públicos de exclusión publicitaria
+		previstos por la legislación aplicable, sin que éstos sustituyan el ejercicio directo de sus derechos frente a
+		NOVAREK.
+	</p>
+
+	<h2>14. Cookies y tecnologías de rastreo</h2>
+	<p>
+		El sitio puede utilizar cookies técnicas o mecanismos equivalentes indispensables para su funcionamiento y
+		seguridad. Si se habilitan cookies analíticas, de personalización, publicidad, píxeles u otras tecnologías no
+		esenciales que permitan recabar datos personales, NOVAREK deberá informar de manera previa y clara su tipo,
+		proveedor, datos obtenidos y finalidades, así como habilitar las opciones de consentimiento o rechazo que
+		legalmente correspondan. Los usuarios también pueden administrar cookies desde la configuración de su navegador,
+		aunque deshabilitar las estrictamente necesarias podría afectar ciertas funciones. Consulta la <a href="/politica-de-cookies/">Política de Cookies</a> para más detalle.
+	</p>
+
+	<h2>15. Menores de edad y datos de terceros</h2>
+	<p>
+		El sitio institucional se orienta principalmente a personas adultas y representantes de organizaciones. NOVAREK no
+		busca recabar deliberadamente datos personales de menores de edad mediante sus formularios generales. Si detecta que
+		recibió información de un menor sin la intervención o autorización legalmente exigible, evaluará su supresión o el
+		tratamiento jurídicamente procedente. Quien proporcione datos de otras personas deberá contar con la legitimación
+		necesaria y, cuando corresponda, informarles sobre este aviso.
+	</p>
+
+	<h2>16. Plataformas y servicios desarrollados por NOVAREK</h2>
+	<p>
+		NOVAREK podrá diseñar, desarrollar, licenciar u operar productos tecnológicos bajo marcas propias o de terceros. El
+		presente aviso regula el tratamiento efectuado en el sitio corporativo novarek.mx y sus comunicaciones
+		relacionadas; no debe entenderse que cubre automáticamente las operaciones, bases de datos o finalidades
+		específicas de KIVO7 ni de cualquier otra plataforma. Para esos productos deberá determinarse quién actúa como
+		responsable o encargado, qué categorías de datos se recaban, cuáles son sus finalidades y qué aviso específico
+		resulta aplicable.
+	</p>
+
+	<h2>17. Cambios al aviso de privacidad</h2>
+	<p>
+		NOVAREK podrá modificar este aviso para reflejar cambios normativos, organizacionales, tecnológicos o en las
+		finalidades de tratamiento. La versión vigente se publicará en <a href="/">https://novarek.mx/</a> en una sección
+		accesible denominada «Aviso de Privacidad», indicando la fecha de actualización. Cuando los cambios requieran un
+		nuevo consentimiento o una notificación individual conforme a la ley, NOVAREK implementará los mecanismos
+		correspondientes antes de efectuar el nuevo tratamiento.
+	</p>
+
+	<h2>18. Autoridad competente y medios de contacto</h2>
+	<p>
+		Si el titular considera que su derecho a la protección de datos personales ha sido vulnerado, podrá acudir a la
+		autoridad competente conforme al régimen federal vigente de protección de datos personales en posesión de los
+		particulares, sin perjuicio de solicitar previamente atención a NOVAREK. Para consultas, aclaraciones y ejercicio de
+		derechos: <a href={mail}>{company.email}</a>; domicilio indicado en el apartado primero.
+	</p>
+
+	<h2>19. Vigencia</h2>
+	<p>
+		Fecha de última actualización: {legalUpdatedAt}. Este aviso será aplicable desde su puesta a disposición pública y
+		permanecerá vigente hasta que sea sustituido por una versión posterior debidamente publicada.
+	</p>
+</LegalPage>

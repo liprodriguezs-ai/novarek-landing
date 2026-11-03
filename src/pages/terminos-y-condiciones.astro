@@ -1,0 +1,247 @@
+---
+import LegalPage from "../components/LegalPage.astro";
+import { company } from "../config/company";
+import { legalUpdatedAt } from "../config/legal";
+
+const mail = `mailto:${company.email}`;
+---
+
+<LegalPage
+	title="Términos y Condiciones de Uso del Sitio Web"
+	metaTitle="Términos y Condiciones | Novarek"
+	description="Términos y condiciones de uso del sitio web de Novarek Technologies: alcance, propiedad intelectual y responsabilidades."
+	subtitle="NOVAREK TECHNOLOGIES, S.A. DE C.V. | https://novarek.mx/"
+	updated={legalUpdatedAt}
+>
+	<h2>1. Identificación del titular y objeto</h2>
+	<p>
+		Los presentes Términos y Condiciones de Uso (en adelante, los «Términos») regulan el acceso, navegación, consulta y
+		utilización del sitio web <a href="/">https://novarek.mx/</a> (en adelante, el «Sitio»), administrado por NOVAREK
+		TECHNOLOGIES, S.A. DE C.V. (en adelante, «NOVAREK» o la «Sociedad»), que utiliza comercialmente la denominación
+		NOVAREK TECHNOLOGIES.
+	</p>
+	<p>
+		NOVAREK es una sociedad mercantil mexicana dedicada, entre otras actividades, a la investigación, diseño,
+		desarrollo, implementación, integración y mantenimiento de software y soluciones tecnológicas. Para comunicaciones
+		generales y solicitudes de información se pone a disposición el correo <a href={mail}>{company.email}</a>.
+		Domicilio físico de atención: Calle Alfonso Priani núm. 1, entre Castrejón y Revolución, colonia La Guadalupe, C. P.
+		10820, alcaldía La Magdalena Contreras, Ciudad de México.
+	</p>
+	<p>
+		El Sitio tiene carácter principalmente corporativo, informativo y de captación de solicitudes comerciales. La
+		consulta de información publicada en él no constituye, por sí sola, la contratación de un producto o servicio.
+	</p>
+
+	<h2>2. Aceptación, alcance y capacidad</h2>
+	<p>
+		El acceso o uso del Sitio implica que la persona usuaria conoce estos Términos y se obliga a respetar las reglas de
+		uso que resulten legalmente exigibles. Cuando una operación requiera consentimiento contractual expreso, NOVAREK lo
+		recabará mediante el mecanismo correspondiente; la mera navegación no se entenderá como aceptación de obligaciones
+		de pago ni de contratos de desarrollo.
+	</p>
+	<p>
+		Quien proporcione datos o solicite servicios declara contar con capacidad jurídica suficiente y, cuando actúe por
+		cuenta de una persona moral, con facultades para formular la solicitud correspondiente. Las personas menores de
+		edad deberán utilizar los canales de contratación con intervención de quien legalmente las represente.
+	</p>
+
+	<h2>3. Contenido y servicios descritos</h2>
+	<p>
+		El Sitio describe de manera general servicios de software a medida, sistemas internos, portales para clientes,
+		automatización de tareas, sitios web y aplicaciones, así como conexión e integración entre herramientas
+		tecnológicas. También puede mostrar procesos de trabajo, casos de referencia, contenidos informativos y medios de
+		contacto.
+	</p>
+	<p>
+		Las características, alcance técnico, funcionalidades, cronograma, recursos, niveles de servicio, licencias,
+		integraciones, mantenimiento, soporte, honorarios y condiciones de entrega de cada proyecto deberán precisarse en la
+		propuesta, cotización, orden de servicio o contrato correspondiente. Las descripciones del Sitio son informativas y
+		no representan una garantía de resultados particulares ni una oferta irrevocable.
+	</p>
+
+	<h2>4. Solicitudes, cotizaciones y formalización</h2>
+	<p>
+		Mediante el formulario de contacto o los medios indicados, la persona interesada podrá proporcionar su nombre,
+		correo electrónico y descripción de su proyecto para solicitar información o una evaluación preliminar. La remisión
+		de una solicitud no obliga a NOVAREK a aceptarla, iniciar trabajos ni reservar capacidad operativa.
+	</p>
+	<p>
+		NOVAREK podrá requerir información adicional para evaluar viabilidad, necesidades, seguridad, alcances, presupuesto
+		y tiempos. Toda cotización estará sujeta a sus condiciones particulares, plazo de vigencia y confirmación escrita. La
+		contratación se perfeccionará conforme al mecanismo de aceptación establecido en el documento contractual aplicable
+		y a las disposiciones legales correspondientes.
+	</p>
+	<p>
+		Si en el futuro se habilitan compras, pagos, suscripciones o contratación directamente en el Sitio, NOVAREK deberá
+		mostrar previamente el precio total, impuestos y cargos aplicables, medios de pago, duración, renovaciones,
+		condiciones de cancelación, atención de reclamaciones y confirmación de la operación, conforme al régimen jurídico
+		aplicable. Estos Términos no sustituyen tales informaciones.
+	</p>
+
+	<h2>5. Propiedad intelectual e industrial</h2>
+	<p>
+		Salvo indicación expresa en contrario, los elementos del Sitio, incluyendo textos, diseño, estructura, código,
+		componentes gráficos, documentación, fotografías, materiales audiovisuales, signos distintivos y demás contenidos,
+		pertenecen a NOVAREK o se utilizan bajo licencia o autorización de sus respectivos titulares. Se encuentran
+		protegidos, según corresponda, por la Ley Federal del Derecho de Autor, la Ley Federal de Protección a la Propiedad
+		Industrial y demás normas aplicables.
+	</p>
+	<p>
+		La consulta del Sitio confiere exclusivamente una autorización limitada, revocable, no exclusiva e intransferible
+		para visualizar sus contenidos con fines lícitos e informativos. No concede licencias de explotación comercial,
+		cesiones de derechos ni autorización para reproducir, distribuir, transformar, extraer masivamente o comercializar
+		los materiales, salvo permiso previo y por escrito o excepción legal aplicable.
+	</p>
+	<p>
+		La titularidad del código fuente, entregables, desarrollos por encargo, herramientas preexistentes, componentes de
+		terceros y licencias de los proyectos contratados se determinará exclusivamente en los contratos específicos y
+		conforme a la legislación aplicable. Nada en estos Términos implica una cesión automática de derechos a favor de
+		NOVAREK o de sus clientes.
+	</p>
+
+	<h2>6. Obligaciones y conductas prohibidas</h2>
+	<p>
+		La persona usuaria se obliga a utilizar el Sitio de forma diligente, lícita y respetuosa de derechos de terceros.
+		Queda prohibido: (i) introducir malware, código malicioso o mecanismos de interferencia; (ii) intentar acceder sin
+		autorización a servidores, cuentas, bases de datos o áreas restringidas; (iii) eludir medidas de seguridad; (iv)
+		realizar extracción automatizada abusiva, ataques de denegación de servicio o actividades que deterioren la
+		operación; (v) suplantar identidades o remitir información falsa, ilícita o infractora; y (vi) utilizar contenidos o
+		signos distintivos sin la autorización correspondiente.
+	</p>
+	<p>
+		NOVAREK podrá adoptar medidas técnicas proporcionadas para preservar la integridad y seguridad del Sitio, sin
+		perjuicio de las acciones legales que procedan.
+	</p>
+
+	<h2>7. Información proporcionada por usuarios</h2>
+	<p>
+		La persona usuaria declara que la información que remita mediante el formulario o por otros canales es veraz,
+		pertinente y que cuenta con facultades para compartirla. Se recomienda no enviar contraseñas, datos financieros
+		sensibles, información confidencial de terceros ni datos personales sensibles a través del formulario público.
+	</p>
+	<p>
+		El envío de una descripción de proyecto no transfiere a NOVAREK derechos de propiedad intelectual sobre ideas,
+		documentos o materiales de quien los remite. Cualquier obligación especial de confidencialidad, tratamiento de
+		secretos empresariales, titularidad o uso de documentación técnica deberá establecerse en un acuerdo específico
+		cuando corresponda.
+	</p>
+
+	<h2>8. Datos personales y tecnologías de seguimiento</h2>
+	<p>
+		Los datos personales que se recaben mediante el Sitio serán tratados de acuerdo con el <a href="/aviso-de-privacidad/">Aviso de Privacidad</a> de NOVAREK, que deberá ponerse a disposición de las
+		personas titulares antes de recabar sus datos o en el momento legalmente procedente, y conforme a la Ley Federal de
+		Protección de Datos Personales en Posesión de los Particulares y disposiciones aplicables.
+	</p>
+	<p>
+		El uso de cookies, analítica, herramientas de terceros u otras tecnologías de seguimiento deberá describirse de
+		manera veraz y congruente en el Aviso de Privacidad y, cuando corresponda, en una <a href="/politica-de-cookies/">política específica</a> y sus mecanismos de gestión. Estos Términos no sustituyen
+		el Aviso de Privacidad.
+	</p>
+
+	<h2>9. Enlaces y recursos de terceros</h2>
+	<p>
+		El Sitio puede incluir vínculos a sitios de clientes, redes sociales, herramientas o servicios de terceros,
+		incluidos casos de referencia. NOVAREK no controla de manera general su contenido, disponibilidad, políticas de
+		privacidad o términos, por lo que cada usuario deberá revisar las condiciones correspondientes.
+	</p>
+	<p>
+		La inclusión de un enlace no implica patrocinio, asociación, garantía o aprobación de todos los contenidos del sitio
+		enlazado, salvo que expresamente se indique lo contrario.
+	</p>
+
+	<h2>10. Disponibilidad, seguridad y actualizaciones</h2>
+	<p>
+		NOVAREK procurará mantener el Sitio accesible y técnicamente funcional; no obstante, podrán presentarse
+		interrupciones por mantenimiento, actualizaciones, fallas de conectividad, eventos de terceros o causas ajenas a su
+		control. Podrá modificar contenidos, funcionalidades y arquitectura del Sitio cuando resulte razonable, procurando
+		evitar afectaciones indebidas a derechos adquiridos.
+	</p>
+	<p>
+		NOVAREK no garantiza que el Sitio opere sin interrupciones ni que sea compatible con todos los dispositivos o
+		navegadores. Lo anterior no limita derechos irrenunciables ni excluye responsabilidades que legalmente no puedan
+		restringirse.
+	</p>
+
+	<h2>11. Información, resultados y responsabilidad</h2>
+	<p>
+		Los contenidos del Sitio tienen finalidad informativa y comercial general. Los ejemplos, descripciones de procesos y
+		casos de éxito reflejan contextos particulares y no garantizan que otros proyectos produzcan resultados idénticos.
+		Las decisiones técnicas y comerciales deben apoyarse en una evaluación específica.
+	</p>
+	<p>
+		En la máxima medida permitida por la legislación aplicable, NOVAREK no será responsable por daños que deriven
+		exclusivamente del uso indebido del Sitio, de información inexacta aportada por el usuario o de fallas imputables a
+		proveedores externos fuera de su control. Esta disposición no excluye responsabilidad por dolo, culpa,
+		incumplimientos propios, violaciones a derechos de consumidores o cualquier otro supuesto que legalmente no admita
+		exoneración.
+	</p>
+
+	<h2>12. Relaciones contractuales independientes</h2>
+	<p>
+		La contratación de desarrollo, licenciamiento, mantenimiento, consultoría, alojamiento, integración o soporte se
+		regirá por sus documentos particulares. En caso de discrepancia respecto de un proyecto contratado, prevalecerá el
+		contrato específico válidamente celebrado, sin perjuicio de las normas imperativas aplicables.
+	</p>
+	<p>
+		Para productos o plataformas independientes desarrollados u operados por NOVAREK, incluyendo aquellos ofrecidos bajo
+		marcas distintas, podrán existir términos de servicio, contratos de licencia, políticas de uso y avisos de
+		privacidad propios. Estos Términos del Sitio corporativo no sustituyen los correspondientes a cada producto o
+		plataforma.
+	</p>
+
+	<h2>13. Atención, aclaraciones y reclamaciones</h2>
+	<p>
+		Para consultas sobre el Sitio, solicitudes de servicios, aclaraciones o reclamaciones, las personas interesadas
+		podrán escribir a <a href={mail}>{company.email}</a>. NOVAREK atenderá las comunicaciones mediante sus canales
+		disponibles y proporcionará seguimiento conforme a la naturaleza del asunto y a los plazos que, en su caso, imponga
+		la ley.
+	</p>
+	<p>
+		Cuando exista una relación de consumo, las personas consumidoras conservarán íntegros los derechos y mecanismos de
+		reclamación reconocidos por la Ley Federal de Protección al Consumidor, incluida la posibilidad de acudir a la
+		autoridad competente.
+	</p>
+
+	<h2>14. Modificaciones y vigencia</h2>
+	<p>
+		NOVAREK podrá actualizar estos Términos para reflejar cambios normativos, operativos, de seguridad o en el
+		funcionamiento del Sitio. La versión vigente indicará su fecha de última actualización y estará disponible para
+		consulta en el propio Sitio.
+	</p>
+	<p>
+		Las modificaciones surtirán efectos hacia el futuro desde su publicación, salvo disposición legal distinta. No
+		alterarán retroactivamente condiciones esenciales de contratos ya celebrados ni afectarán derechos adquiridos sin el
+		consentimiento exigible.
+	</p>
+
+	<h2>15. Legislación aplicable y solución de controversias</h2>
+	<p>
+		Estos Términos se interpretarán conforme a las leyes federales aplicables de los Estados Unidos Mexicanos. Para
+		controversias relacionadas con el uso del Sitio que no se resuelvan de manera amistosa, serán competentes las
+		autoridades y tribunales que correspondan conforme a las reglas legales de competencia.
+	</p>
+	<p>
+		Cuando resulten aplicables normas de protección al consumidor, no se entenderá que existe renuncia anticipada a la
+		jurisdicción, autoridades, procedimientos o derechos que dichas normas reconocen.
+	</p>
+
+	<h2>16. Divisibilidad e interpretación</h2>
+	<p>
+		Si alguna disposición de estos Términos fuera declarada inválida, ineficaz o inexigible por autoridad competente,
+		las restantes conservarán sus efectos en cuanto puedan subsistir válidamente. Los encabezados se incorporan
+		únicamente para facilitar la lectura.
+	</p>
+
+	<h2>17. Datos de contacto</h2>
+	<ul>
+		<li>Razón social: NOVAREK TECHNOLOGIES, S.A. DE C.V.</li>
+		<li>Nombre comercial: NOVAREK TECHNOLOGIES</li>
+		<li>Sitio web: <a href="/">https://novarek.mx/</a></li>
+		<li>Correo electrónico: <a href={mail}>{company.email}</a></li>
+		<li>
+			Domicilio físico de atención: Calle Alfonso Priani núm. 1, entre Castrejón y Revolución, colonia La Guadalupe,
+			C. P. 10820, alcaldía La Magdalena Contreras, Ciudad de México.
+		</li>
+	</ul>
+	<p>Fecha de última actualización: {legalUpdatedAt}.</p>
+</LegalPage>
